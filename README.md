@@ -86,3 +86,47 @@ Dessa forma, os entregáveis para 04/06 são:
 - **Divisão dos conjuntos de treino, teste e validação;** 
 - **Validação dos algoritmos com métricas de P, R e F1;**
 - **Deploy em um container e conexão com dados;**
+
+## Etapas do Trabalho:
+
+### Pré-Processamento:
+
+Para o pré-processamento, utilizamos a linguagem Python e as suas bibliotecas:
+
+- **SEABORN**
+- **MATPLOTLIB**
+- **SCIKIT-LEARN**
+- **NUMPY**
+- **PANDAS**
+
+Para o pré-processamento fizemos algumas etapas:
+
+- **Retirada de Dados Ausentes**
+Quando fomos analisar os dados, percebemos que haviam muitas colunas com dados faltantes. A ausência desses dados seria prejudicial na elaboração do modelo e por isso resolvemos,incialmente, retirar as colunas que possuem mais de 30% de dados faltantes. Após isso, resolvemos excluir as linhas que possuiam dados faltantes para que elas também não influenciem negativamente os resultados. Após as operações, a tabela continha 307.753 linhas e 52 colunas.As operações realizadas foram as seguintes:
+
+```python
+#Retiramos do DataFrame todas as colunas que possuem mais de 30% dos dados ausentes
+threshold = len(data) * 0.7
+data_cleaned = data.dropna(thresh=threshold, axis=1)
+
+#Removemos todas as linhas que possuem algum dado ausente
+data_cleaned = data_cleaned.dropna()
+```
+- **Seleção das Colunas que Possuem Relevância para Diagnóstico de Dengue**
+Mesmo após a remoção das colunas que possuiam quantidades de dados faltantes, ainda tinhamos 52 colunas e muitas com informações des
+
+
+### Criação dos Algoritmos:
+
+### Criação do Modelo:
+
+### Treinamento do Modelo:
+
+### Deploy do Container:
+
+## Resultados/Entregáveis:
+
+### Estatística Descritiva:
+
+### Deploy do Modelo:
+
