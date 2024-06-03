@@ -131,11 +131,11 @@ Não conseguimos enviar a planilha dos dados pré-processados para o repositóri
 Segue em anexo os histogramas do pré processamento:
 
 <div align="center">
-  <table style="border: none; margin: auto;">
+  <table style="border: none; margin: auto; background-color: white;">
     <tr>
       <td align="center" style="border: none;">
         <a href="link_for_website">
-          <img height= 1550em" src="./assets/histogramas.png" border="0" />
+          <img height="1550em" src="./assets/histogramas.png" border="0" />
         </a>
       </td>
     </tr>
@@ -273,21 +273,21 @@ Por fim, obtivemos os resultados dos algoritmos dos modelos que podem ser encont
 
 ## Conclusão
 
-- <p align="justify">Neste relatório, apresentamos o desenvolvimento e avaliação de modelos de aprendizado de máquina para diagnosticar a dengue com base em dados fornecidos pela SESAB. Nossa abordagem seguiu um fluxo de trabalho estruturado, desde o pré-processamento dos dados até a validação cruzada e avaliação de desempenho dos modelos.
+- Neste relatório, apresentamos o desenvolvimento e avaliação de modelos de aprendizado de máquina para diagnosticar a dengue com base em dados fornecidos pela SESAB. Nossa abordagem seguiu um fluxo de trabalho estruturado, desde o pré-processamento dos dados até a validação cruzada e avaliação de desempenho dos modelos.
 
 ### Pré-Processamento
-- <p align="justify">No pré-processamento, lidamos com dados ausentes e selecionamos colunas relevantes para o diagnóstico da dengue. As operações de limpeza resultaram em um conjunto de dados com 307.753 linhas e 52 colunas, garantindo um dataset mais robusto para a modelagem.
+- No pré-processamento, lidamos com dados ausentes e selecionamos colunas relevantes para o diagnóstico da dengue. As operações de limpeza resultaram em um conjunto de dados com 307.753 linhas e 52 colunas, garantindo um dataset mais robusto para a modelagem.
 
 ### Modelagem
-- <p align="justify">Utilizamos várias técnicas de aprendizado de máquina, incluindo K-Nearest Neighbors (KNN), Árvore de Decisão, Rede Neural (Multilayer Perceptron - MLP), Regressão Logística e Random Forest. Para cada técnica, foram definidos hiperparâmetros específicos conforme as orientações fornecidas pelos coordenadores da matéria.
+- Utilizamos várias técnicas de aprendizado de máquina, incluindo K-Nearest Neighbors (KNN), Árvore de Decisão, Rede Neural (Multilayer Perceptron - MLP), Regressão Logística e Random Forest. Para cada técnica, foram definidos hiperparâmetros específicos conforme as orientações fornecidas pelos coordenadores da matéria.
 
 ### Avaliação
-- <p align="justify">Avaliamos os modelos utilizando validação cruzada estratificada e métricas de F1, precisão e recall. Os resultados das avaliações foram detalhados e comparados, oferecendo uma visão clara do desempenho de cada abordagem.
+- Avaliamos os modelos utilizando validação cruzada estratificada e métricas de F1, precisão e recall. Os resultados das avaliações foram detalhados e comparados, oferecendo uma visão clara do desempenho de cada abordagem.
 
 ### Resultados
-- <p align="justify">Os resultados dos modelos mostraram diferentes níveis de eficácia, destacando-se o desempenho da Rede Neural (MLP) em termos de precisão, recall e F1-score. Estes resultados indicam que a MLP pode ser uma abordagem promissora para o diagnóstico de dengue com base nos dados disponíveis.
+- Os resultados dos modelos mostraram diferentes níveis de eficácia, destacando-se o desempenho da Rede Neural (MLP) em termos de precisão, recall e F1-score. Estes resultados indicam que a MLP pode ser uma abordagem promissora para o diagnóstico de dengue com base nos dados disponíveis.
 
 ## Conclusões Finais
-- <p align="justify">Os modelos desenvolvidos e os processos de pré-processamento implementados demonstram a eficácia do uso de técnicas de aprendizado de máquina para o diagnóstico de doenças como a dengue. A abordagem sistemática desde a limpeza de dados até a avaliação dos modelos garantiu resultados confiáveis e robustos.
+- Os modelos desenvolvidos e os processos de pré-processamento implementados demonstram a eficácia do uso de técnicas de aprendizado de máquina para o diagnóstico de doenças como a dengue. A abordagem sistemática desde a limpeza de dados até a avaliação dos modelos garantiu resultados confiáveis e robustos.
 
-- <p align="justify">Para futuras iterações, recomenda-se explorar técnicas de ajuste de hiperparâmetros e incorporação de novos dados, além de testar outras arquiteturas de redes neurais para potencialmente melhorar ainda mais o desempenho do modelo.
+- Para futuras iterações, recomenda-se explorar técnicas de ajuste de hiperparâmetros e incorporação de novos dados, além de testar outras arquiteturas de redes neurais para potencialmente melhorar ainda mais o desempenho do modelo.
