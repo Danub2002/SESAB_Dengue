@@ -1,8 +1,12 @@
 ### This READ.md template was written based on this [repository](https://github.com/FernandoSchett/github_readme_template).
 
-<div style="margin-bottom: -30px;"><h1 align="center">Relatório SESAB 04/06</h1></div>
-<div style="margin-top: -30px; margin-bottom: -30px;"><h2 align="center">Etapa A/Cenário 1</h2></div>
-<div style="margin-top: -30px;"><h2 align="center">Entrega 04/06</h2></div>
+<div align="center" style="line-height: 0.5">
+
+# Relatório SESAB
+## Etapa A/Cenário 1
+## Entrega 04/06
+
+</div>
 
 <table style="border: none;">
   <tr>
