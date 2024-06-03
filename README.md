@@ -130,7 +130,17 @@ Não conseguimos enviar a planilha dos dados pré-processados para o repositóri
 
 Segue em anexo os histogramas do pré processamento:
 
-
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="link_for_website">
+          <img height="1550em" src="./assets/histogramas.png" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ### Criação do Modelo:
 
