@@ -8,12 +8,12 @@
   <tr>
     <td align="left" style="padding-right: 90px; border: none;">
       <a href="link_for_website">
-        <img height="125em" src="./assets/SESAB.png" />
+        <img height="125em" src="./assets/SESAB.png" border="0" />
       </a>
     </td>
     <td align="right" style="padding-left: 90px; border: none;">
       <a href="link_for_website">
-        <img height="125em" src="./assets/ufba-logo.png" />
+        <img height="125em" src="./assets/ufba-logo.png" border="0" />
       </a>
     </td>
   </tr>
