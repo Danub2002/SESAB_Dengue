@@ -142,6 +142,8 @@ Segue em anexo os histogramas do pré processamento:
   </table>
 </div>
 
+Caso a visualização esteja tendo problemas de visualização devido ao modo escuro do GitHub, suegerimos que clique com o botão direito na imagem e escolha abrir a imagem em uma nova guia, onde ela será exibida corretamente.
+
 ### Criação do Modelo:
 
 - A seção de criação do modelo começa com a importação das bibliotecas necessárias. As bibliotecas importadas incluem pandas e numpy para manipulação de dados, sklearn para modelagem de aprendizado de máquina, tqdm para barras de progresso e loguru para registro de logs.
@@ -260,7 +262,7 @@ Por fim, obtivemos os resultados dos algoritmos dos modelos que podem ser encont
     <tr>
       <td align="center" style="border: none;">
         <a href="link_for_website">
-          <img height="250em" src="./assets/precisao_modelos.png" border="0" />
+          <img height="250em" src="./assets/precisao_modelos.PNG" border="0" />
         </a>
       </td>
     </tr>
