@@ -27,13 +27,13 @@
 <div align="center">
 
 ## Integrantes do Grupo:
-Adrielly Silva Ferreira de Oliveira
-Danilo Oliveira Andrade
-Diego Quadros dos Santos Dias
-Gabriel Sinzinio Bonfim Cruz
-Guilherme Castro Hora Fontes
-Gustavo Jorge Novaes Silva
-João Victor Leahy de Melo
+Adrielly Silva Ferreira de Oliveira,
+Danilo Oliveira Andrade,
+Diego Quadros dos Santos Dias,
+Gabriel Sinzinio Bonfim Cruz,
+Guilherme Castro Hora Fontes,
+Gustavo Jorge Novaes Silva,
+João Victor Leahy de Melo.
 
 </div>
 
