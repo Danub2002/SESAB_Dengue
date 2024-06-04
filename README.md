@@ -209,10 +209,10 @@ def run_pipeline():
 		cv = StratifiedKFold(n_splits=N_FOLDS,random_state=i,shuffle=True)
 			
 		models =[
-			# ("KNN", KNeighborsClassifier(n_neighbors=5)),
-			# ("Decision Tree", DecisionTreeClassifier(criterion='entropy',max_depth=None,min_samples_split=2,min_samples_leaf=1,random_state=i)),
-			# ("Logistic Regression", LogisticRegression(penalty='l2', solver='lbfgs', max_iter=100,random_state=i)),
-			# ("Random Forest", RandomForestClassifier(n_estimators=100,criterion='entropy',random_state=i)),
+			("KNN", KNeighborsClassifier(n_neighbors=5)),
+			("Decision Tree", DecisionTreeClassifier(criterion='entropy',max_depth=None,min_samples_split=2,min_samples_leaf=1,random_state=i)),
+			("Logistic Regression", LogisticRegression(penalty='l2', solver='lbfgs', max_iter=100,random_state=i)),
+			("Random Forest", RandomForestClassifier(n_estimators=100,criterion='entropy',random_state=i)),
 			("Multilayer Perceptron", MLPClassifier(hidden_layer_sizes=(100, 100),activation='relu',solver='adam',learning_rate_init=0.001,max_iter=200,batch_size=32,random_state=i))				
 		]
 
