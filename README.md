@@ -269,7 +269,7 @@ Por fim, obtivemos os resultados dos algoritmos dos modelos que podem ser encont
   </table>
 </div>
 
-Como podemos ver, para o algoritmo de MLP obtivemos resultado 0 nos testes de validação utilizados, investigamos a causa desse equívoco mas não encontramos discrepâncias no código que poderiam ocasionar esse resultado. Entretanto, os resultados dos outros algoritmos permanecem normais e dentro do esperado, com uma média de 60% de acerto no diagnóstico da doença.
+Como podemos ver, para o algoritmo de MLP obtivemos resultado 0 nos testes de validação utilizados, investigamos a causa desse equívoco mas não encontramos discrepâncias no código que poderiam ocasionar esse resultado. Entretanto, os resultados dos outros algoritmos permanecem normais e dentro do esperado, com uma média em torno de 60% de acerto no diagnóstico da doença.
 
 
 ## Conclusão
