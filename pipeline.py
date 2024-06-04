@@ -7,6 +7,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_score,recall_score,f1_score
+from sklearn.feature_selection import SelectKBest, chi2
 from tqdm import tqdm
 
 from loguru import logger as log
@@ -35,6 +36,10 @@ def run_pipeline():
 	X,y = df.drop("CLASSI_FIN",axis=1).to_numpy(),df["CLASSI_FIN"].to_numpy()
 	
 
+	# Create the object for SelectKBest and fit and transform the classification data
+	# k is the number of features you want to select [here it's 2]
+	X_selected=SelectKBest(score_func=chi2,k=5).fit_transform(X,y)
+	X_selected
 	for i in tqdm(range(N_ITERS)):
 		cv = StratifiedKFold(n_splits=N_FOLDS,random_state=i,shuffle=True)
 			
