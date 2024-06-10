@@ -1,6 +1,5 @@
-model_name,F1,Recall,Precision
-Decision Tree,0.63,0.6,0.66
-KNN,0.6,0.56,0.65
-Logistic Regression,0.25,0.17,0.56
-Multilayer Perceptron,0.0,0.0,0.0
-Random Forest,0.61,0.59,0.63
+model_name,AUC,F1,Recall,Precision
+Decision Tree,0.68,0.63,0.6,0.66
+KNN,0.67,0.6,0.56,0.65
+Logistic Regression,0.53,0.26,0.17,0.55
+Random Forest,0.66,0.61,0.59,0.63
