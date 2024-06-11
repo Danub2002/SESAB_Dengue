@@ -621,9 +621,7 @@ A matriz de confusão final pode ser encontrada a seguir:
   <table style="border: none; margin: auto; background-color: white;">
     <tr>
       <td align="center" style="border: none;">
-        <a href="https://app.powerbi.com/links/2qgnVXixyU?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
           <img height="600em" src="./assets/matriz_de_confusao.jpg" border="0" />
-        </a>
       </td>
     </tr>
   </table>
