@@ -408,13 +408,41 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 ### Monitoramento da Performance do Modelo:
 
+> Aqui estão as etapas que levam em conta apenas as alterações feitas no código-fonte descrito integralmente no relatório anterior. Portanto, qualquer modificação no código-fonte será detalhada e justificada; caso contrário, presume-se que o código permaneceu inalterado.
+
 > O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
 
 Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos.
 
-#### Definição da quantidade de iterações para a execução dos modelos
+- Quanto as importações das bibliotecas necessárias, comparado ao código anterior, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
 
-  Optamos por 5 iterações, como descrito no código abaixo:
+```python
+    from sklearn.metrics import precision_score,recall_score,f1_score,confusion_matrix, roc_curve, auc,RocCurveDisplay
+```
+
+- Como descrito no relatório anterior, definimos uma função 'compute_scores' para calcular as métricas F1, Precision e Recall. Nessa versão também adicionamos uma função interna 'roc_calc_viz_pred' para gerar e retornar a curva ROC de cada modelo, incluindo FPR, TPR e AUC.
+
+  ```python
+    def compute_scores(y_test,y_pred):
+      def roc_calc_viz_pred(y_test, y_pred):
+        viz = RocCurveDisplay.from_predictions(
+                    y_test,
+                    y_pred
+                  )
+
+        return viz.fpr, viz.tpr, viz.roc_auc
+      
+      f1 = f1_score(y_test,y_pred)
+      precision = precision_score(y_test,y_pred)
+      recall = recall_score(y_test,y_pred)
+      fpr,tpr,auc = roc_calc_viz_pred(y_test,y_pred)
+
+      return f1,precision,recall,fpr,tpr,auc
+  ```
+
+- Em seguida temos a função run_pipeline onde a maior parte do trabalho de modelagem é feito. Primeiro, os dados são lidos do arquivo CSV e armazenados em um DataFrame pandas. Quanto a quantidade de iterações, optamos por 5. 
+
+- No código anterior um dicionário vazio chamado 'results' foi criado para armazenar os resultados das métricas de avaliação e de outros dados relevantes gerados durante a validação cruzada, como 'iteration' e 'fold'. Para mais, nessa versão também adicionamos os dados referentes às matrizes de confusão, curva ROC e AUC para realizar o monitoramento do desempenho dos modelos. 
 
   ```python
     def run_pipeline(): 
@@ -435,21 +463,73 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
         "Precision":[]
       }
   ```
+- Em seguida, selecionamos as 5 características mais relevantes do conjunto de dados X em relação à variável alvo y usando o teste qui-quadrado.
 
-#### Cálculo das métricas F1, Recall e Precision
+```python
+    	X = SelectKBest(score_func=chi2,k=5).fit_transform(X,y)
+```
 
-  Como dito no relatório anterior, definimos uma função 'compute_scores' para calcular as métricas F1, Precision e Recall.
+- O restante do código permaneceu semelhante à versão descrita no relatório anterior. Dentro da função run_pipeline, um loop realiza a validação cruzada estratificada.
 
-  ```python
-  def compute_scores(y_test,y_pred):
-    f1 = f1_score(y_test,y_pred)
-    precision = precision_score(y_test,y_pred)
-    recall = recall_score(y_test,y_pred)
-    return f1,precision,recall
-  ```
-  Um dicionário vazio chamado 'results' foi criado para armazenar os resultados das métricas de avaliação e de outros dados relevantes gerados durante a validação cruzada, como 'iteration' e 'fold'. Para mais, diferente da versão descrita no relatório anterior ,também adicionamos os dados referentes às matrizes de confusão, curva ROC e AUC para facilitar o monitoramento do desempenho dos modelos.
+- Um loop interno treina e testa cada modelo em cada fold da validação cruzada. O modelo é treinado no conjunto de treinamento e as previsões são feitas no conjunto de teste. Na versão mais atual, as métricas F1, precisão, recall, além dos dados das matrizes de confusão, curva ROC e AUC, são calculadas e armazenadas no dicionário results.
 
-  O resultado final alcançado foi:
+- Finalmente, os resultados são convertidos em um DataFrame do pandas e salvos em um arquivo CSV. Em seguida, o DataFrame é agrupado pelo nome do modelo, e as médias das métricas são calculadas e armazenadas em outro arquivo CSV.
+
+```python
+   for i in tqdm(range(N_ITERS)):
+      cv = StratifiedKFold(n_splits=N_FOLDS,random_state=i,shuffle=True)
+        
+      models =[
+        ("KNN", KNeighborsClassifier(n_neighbors=5)),
+        ("Decision Tree", DecisionTreeClassifier(criterion='entropy',max_depth=None,min_samples_split=2,min_samples_leaf=1,random_state=i)),
+        ("Logistic Regression", LogisticRegression(penalty='l2', solver='lbfgs', max_iter=100,random_state=i)),
+        ("Random Forest", RandomForestClassifier(n_estimators=100,criterion='entropy',random_state=i)),
+        # ("Multilayer Perceptron", MLPClassifier(hidden_layer_sizes=(100, 100),activation='relu',solver='adam',learning_rate_init=0.001,max_iter=200,batch_size=32,random_state=i))				
+      ]
+
+      for j,(train_index,test_index) in enumerate(cv.split(X,y)):
+
+          log.info(f"iteration: {i} fold: {j}")
+          X_train,y_train = X[train_index],y[train_index]
+          X_test, y_test = X[test_index],y[test_index]
+          
+          
+          for model_name,model in models:
+            
+            model.fit(X_train,y_train)
+            y_pred = model.predict(X_test)
+
+            f1,precision, recall,fpr,tpr,auc= compute_scores(y_test,y_pred)
+            
+            cm = confusion_matrix(y_test,y_pred, labels=np.unique(y))
+            # confusion_matrices[model_name].append(cm)
+
+            results['model_name'].append(model_name)
+            results['iteration'].append(i)
+            results['fold'].append(j)
+            results['F1'].append(f1)
+            results['TPR'].append(tpr)
+            results['FPR'].append(fpr)
+            results['Confusion Matrix'].append(cm)
+            results['AUC'].append(auc)
+            results['Recall'].append(recall)
+            results['Precision'].append(precision)
+            log.info(f"{model_name}.......... f1: {f1}")
+
+  df_raw = pd.DataFrame(results)
+
+  df = df_raw.groupby(["model_name"]).mean().round(2).reset_index()
+  df = df.drop(["iteration","fold","FPR","TPR","Confusion Matrix"],axis= 1)
+  df_raw.to_csv("results/dengue_results_by_fold.csv",index=False)
+  df.to_csv("results/dengue_results.csv",index=False)
+
+  if __name__ == "__main__":
+    run_pipeline()
+```
+
+#### Métricas de desempenho
+
+- O resultado final permaneceu o mesmo do relatório anterior, uma vez que nenhum pré-processamento ou mudança de hiperparâmetros foi feito.
 
   <div align="center">
   <table style="border: none; margin: auto;">
@@ -463,44 +543,166 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
   </table>
   </div> 
 
-  De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
+De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
   
-  O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree.
+O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree.
 
-  O KNN tem um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor. 
+O KNN apresentou um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor. 
   
-  A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
+A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
 
-- 3º: Construção da matriz de confusão
+#### Construção da matriz de confusão
 
-  Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos em comparação com os valores reais, nós geramos uma matriz de confusão. 
+Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos em comparação com os valores reais, foi gerada uma matriz de confusão.
 
-  Como utilizamos 5 iterações, uma matriz de confusão foi gerada para cada fold dentro de cada iteração para cada modelo. Assim, para gerar uma única matriz, nós somamos os valores das matrizes geradas durante as iterações e tiramos a sua média.
+- O código referente à construção e plotagem da matriz de confusão está contido no arquivo 'roc_curve'
+
+- Primeiramente definimos a função 'str_to_matrix', na qual converte uma string que está representando uma matriz de confusão em uma matriz NumPy. Em seguida, essa função é aplicada à coluna "Confusion Matrix" do DataFrame df, convertendo cada entrada de string em uma matriz NumPy.
+
+```python
+    def str_to_matrix(s):
+      # Remove the outer brackets and newline characters
+      s = s.strip('[]\n ')
+      
+      # Split the string into individual rows
+      rows = s.split('\n')
+      
+      # Split each row into individual elements, ensuring to strip out unwanted characters
+      matrix = [list(map(int, row.strip('[] ').split())) for row in rows]
+      
+      # Convert the list of lists to a numpy array
+      matrix = np.array(matrix)
+      
+      return matrix
+```
+
+- Em seguida, agrupamos e calculamos a média das matrizes de confusão para cada modelo.
+
+- Como utilizamos 5 iterações, uma matriz de confusão foi gerada para cada fold dentro de cada iteração para cada modelo. Assim, para gerar uma única matriz para cada modelo, nós extraímos a média das matrizes geradas durante as iterações. 
+
+- Por fim, plotamos as matrizes de confusão média de cada modelo em um grid de subplots.
+
+```python
+  df["Confusion Matrix"] = df["Confusion Matrix"].apply(str_to_matrix)
+  models = df["model_name"].unique()
+  confusion_matrices = {model: df[df["model_name"] == model]["Confusion Matrix"] for model in models}
   
-  A matriz de confusão final pode ser encontrada a seguir:
+  for model_name, cm in confusion_matrices.items():
+    # Média das matrizes de confusão
+    confusion_matrices[model_name] = np.floor(np.mean(confusion_matrices[model_name],axis=0)).astype(int)
 
-  - PNG
+  n_models = len(models)
+  n_cols = 2
+  n_rows = (n_models + n_cols - 1) // n_cols
+  # fig, axes = plt.subplots(1, 4, figsize=(20, 5))
+  fig, axes = plt.subplots(n_rows, n_cols, figsize=(15, 5 * n_rows))
+  axes = axes.flatten()
+  for i,(model_name,cm) in enumerate(confusion_matrices.items()):
+    ax = axes[i]
+    sns.heatmap(cm,annot=True, fmt='d', cmap = "Blues",cbar=False,ax=ax)
+    ax.set_title(model_name)
+    ax.set_xlabel('Predicted')
+    ax.set_ylabel('True')
 
-  De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
+        
+  plt.tight_layout()
+  plt.show()	
+```
   
-  O modelo Decision Tree demonstrou maior equilíbrio entre positivos e negativos em comparação com o KNN.Porém, ele também apresentou uma quantidade significativa de falsos positivos e falsos negativos.
+A matriz de confusão final pode ser encontrada a seguir:
 
-  O Logistic Regression, por sua vez, embora tenha gerado um baixo número de falsos positivos (3,212), falhou significativa na detecção de positivos, com alta taxa de falsos negativos (23,092), sendo o pior dos modelos. 
+- PNG
 
-  Por fim, o Random Forest apresentou bom equilíbrio entre verdadeiros positivos e verdadeiros negativos, semelhante ao Decision Tree, mas ligeiramente melhor em detectar positivos. Entretanto, ele apresentou um número considerável de falsos positivos (7,469)
-
-  Acreditamos que o fato dos modelos estarem, de modo geral, obtendo números altos de verdadeiros negativos pode ser devido a falta de informações no atributo a ser predito ('CLASSI_FIN'). Tais informações foram solicitadas via formulário à SESAB, como instruído pelos professores e monitores. 
+De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
   
-  - 4º: Construção da curva ROC e utilização da métrica AUC
-  
-  Nós também utilizamos a curva ROC e a métrica AUC (Area Under the Curve) para avaliar o desempenho de modelos de classificação. 
+O modelo Decision Tree demonstrou maior equilíbrio entre positivos e negativos em comparação com o KNN.Porém, ele também apresentou uma quantidade significativa de falsos positivos e falsos negativos.
 
-  Segue abaixo as curvas ROC e suas respectivas AUC:
+O Logistic Regression, por sua vez, embora tenha gerado um baixo número de falsos positivos (3,212), falhou significativa na detecção de positivos, com alta taxa de falsos negativos (23,092), sendo o pior dos modelos. 
 
-  - PNG
+Por fim, o Random Forest apresentou bom equilíbrio entre verdadeiros positivos e verdadeiros negativos, semelhante ao Decision Tree, mas ligeiramente melhor em detectar positivos. Entretanto, ele apresentou um número considerável de falsos positivos (7,469)
 
-  Ao analisar a imagem acima podemos perceber que o Decision Tree é o modelo mais eficaz entre os avaliados, possuindo um AUC de 0.68. Os modelos Random Forest e KNN possuem desempenho similar, com AUCs semelhantes (de 0.66 e 0.67, respectivamente), mas ainda um pouco inferiores quando comparadaos ao Decision Tree. 
+Acreditamos que o fato dos modelos estarem, de modo geral, obtendo números altos de verdadeiros negativos pode ser devido a falta de informações na classe a ser predita ('CLASSI_FIN'). Tais informações foram solicitadas via formulário à SESAB, como instruído pelos professores e monitores. 
 
-  Com um AUC de 0.53, a curva ROC do modelo Logistic Regression está muito próxima da linha diagonal, indicando que o desempenho do modelo é apenas ligeiramente melhor do que o acaso.
+#### Construção da curva ROC 
 
-  As análise extraídas da curva ROC confirmam as observações feitas anteriomente sobre o desempenho dos modelos, destacando o Decision Tree como o modelo mais promissor, seguido por Random Forest e KNN.
+Nós também utilizamos a curva ROC e a métrica AUC (Area Under the Curve) para avaliar o desempenho de modelos de classificação. 
+
+- A curva ROC foi gerada no mesmo arquivo da matriz de confusão, 'roc_curve'. 
+
+- O arquivo começa com a importação das bibliotecas necessárias para a construção da curva ROC. Essas bibliotecas são importadas para manipulação de dados (pandas), cálculos numéricos (numpy), plotagem de gráficos (matplotlib e seaborn), e cálculo da métrica AUC (sklearn).
+
+```python
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    from sklearn.metrics import auc
+    import seaborn as sns
+    import ast
+```
+- Em seguida, a função 'plot_roc_curve_from_df' é definida. Ela recebe um DataFrame contendo os resultados dos diferentes modelos ('dengue_results_by_fold.csv') e plota as curvas ROC para cada um deles.
+
+- Como são 5 iterações, temos diferentes curvas ROC sendo geradas. Portanto, foi necessário gerar uma curva ROC média para cada modelo por meio da média dos 'true positive rates', da média do AUC e do desvio padrão.
+
+- Por fim, essa curvas foram plotadas para cada modelo com a sua respectiva AUC média e desvio padrão.
+
+```python
+def plot_roc_curve_from_df(df):
+    mean_fpr = np.linspace(0, 1, 100)
+    fig, ax = plt.subplots(figsize=(10, 7))
+
+    list_models = df['model_name'].unique()
+    
+    for nmodel in list_models:
+
+        # Fixing the logical AND operator by wrapping individual conditions in parentheses
+        df_filter = df[(df['model_name'] == nmodel)]
+        
+        tprs = []
+        aucs = []
+
+        for index, row in df_filter.iterrows():
+            x = row['FPR'].strip('[]\n ')
+            y = row['TPR'].strip('[]\n ')
+
+            x = np.fromstring(x, dtype=float, sep=' ')
+            y = np.fromstring(y, dtype=float, sep=' ')
+
+            interp_tpr = np.interp(mean_fpr, x, y)
+            interp_tpr[0] = 0.0
+            tprs.append(interp_tpr)
+            aucs.append(row['AUC'])
+
+        mean_tpr = np.mean(tprs, axis=0)
+        mean_tpr[-1] = 1.0
+        mean_auc = auc(mean_fpr, mean_tpr)
+        std_auc = np.std(aucs)
+
+        ax.plot(
+            mean_fpr,
+            mean_tpr,
+            '--',
+            label=r"Mean ROC (%0.25s AUC = %0.2f $\pm$ %0.2f)" % (nmodel, mean_auc, std_auc),
+            lw=2,
+            alpha=0.8,
+        )
+
+    ax.plot([0, 1], [0, 1], linestyle="-", lw=3, color="r", alpha=0.8)
+    plt.title("ROC Curve")
+    plt.xlabel("False Positive Rate", fontsize=16)
+    plt.ylabel("True Positive Rate", fontsize=16)
+    plt.xticks(fontsize=15)
+    plt.yticks(fontsize=15)
+    ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    
+    plt.show()
+```
+
+- Segue abaixo as curvas ROC média dos modelos com as suas respectivas AUC média e desvio padrão:
+
+- PNG
+
+Ao analisar a imagem acima podemos perceber que o Decision Tree é o modelo mais eficaz entre os avaliados, possuindo um AUC de 0.68. Os modelos Random Forest e KNN possuem desempenho similar, com AUCs semelhantes (de 0.66 e 0.67, respectivamente), mas ainda um pouco inferiores quando comparadaos ao Decision Tree. 
+
+Com um AUC de 0.53, a curva ROC do modelo Logistic Regression está muito próxima da linha diagonal, indicando que o desempenho do modelo é apenas ligeiramente melhor do que o acaso.
+
+As análise extraídas da curva ROC confirmam as observações feitas anteriomente sobre o desempenho dos modelos, destacando o Decision Tree como o modelo mais promissor, seguido por Random Forest e KNN.
