@@ -412,7 +412,7 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 > O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
 
-Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos. O monitoramente foi feito considerando: *1. Métricas de desempenho, 2. Matriz de confusão e 3. Curva ROC*.\ 
+Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos. O monitoramente foi feito considerando: *1. Métricas de desempenho, 2. Matriz de confusão e 3. Curva ROC*.s
 
 **Porém, antes de discutirmos sobre os tópicos utilizados para monitorar a performance dos modelos, iremos dicutir sobre as modificações feitas no arquivo `pipeline.py`'**
 
