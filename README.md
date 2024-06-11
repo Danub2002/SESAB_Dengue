@@ -414,7 +414,7 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos. O monitoramente foi feito considerando: *1. Métricas de desempenho, 2. Matriz de confusão e 3. Curva ROC*.
 
-*Porém, antes de discutirmos sobre os tópicos utilizados para monitorar a performance dos modelos, iremos dicutir sobre as modificações feitas no arquivo `pipeline.py`'*
+**Porém, antes de discutirmos sobre os tópicos utilizados para monitorar a performance dos modelos, iremos dicutir sobre as modificações feitas no arquivo `pipeline.py`'**
 
 - Começando com a importação das bibliotecas, comparado ao código anterior, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
 
