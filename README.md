@@ -622,7 +622,7 @@ A matriz de confusão final pode ser encontrada a seguir:
     <tr>
       <td align="center" style="border: none;">
         <a href="link_for_website">
-          <img height="1000em" src="./assets/matriz_de_confusao.png" border="0" />
+          <img height="900em" src="./assets/matriz_de_confusao.png" border="0" />
         </a>
       </td>
     </tr>
