@@ -612,7 +612,7 @@ Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos mod
   plt.tight_layout()
   plt.show()	
 ```
-  - Análise 
+    - Análise 
 
 A matriz de confusão final pode ser encontrada a seguir:
 
