@@ -408,16 +408,35 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 ### Monitoramento da Performance do Modelo:
 
+> O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
 
-  O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
+Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos.
 
-Nesta seção, discutiremos as etapas que foram seguidas para monitorar a perfomance dos modelos.
+#### Definição da quantidade de iterações para a execução dos modelos
 
-- 1º: Definição da quantidade de iterações para a execução dos modelos
+  Optamos por 5 iterações, como descrito no código abaixo:
 
-  Optamos por 5 iterações. 
+  ```python
+    def run_pipeline(): 
+      N_ITERS = 5
+      N_FOLDS = 5
+      df = pd.read_csv("../dengue_pre_processed.csv")
 
-- 2º: Cálculo das métricas F1, Recall e Precision
+      results = {
+        "model_name":[],
+        "iteration":[],
+        "fold":[],
+        "TPR":[],
+        "FPR":[],
+        "Confusion Matrix": [],
+        "AUC":[],
+        "F1": [],
+        "Recall": [],
+        "Precision":[]
+      }
+  ```
+
+#### Cálculo das métricas F1, Recall e Precision
 
   Como dito no relatório anterior, definimos uma função 'compute_scores' para calcular as métricas F1, Precision e Recall.
 
@@ -428,7 +447,7 @@ Nesta seção, discutiremos as etapas que foram seguidas para monitorar a perfom
     recall = recall_score(y_test,y_pred)
     return f1,precision,recall
   ```
-  Um dicionário vazio chamado 'results' foi criado para armazenar os resultados das métricas de avaliação.
+  Um dicionário vazio chamado 'results' foi criado para armazenar os resultados das métricas de avaliação e de outros dados relevantes gerados durante a validação cruzada, como 'iteration' e 'fold'. Para mais, diferente da versão descrita no relatório anterior ,também adicionamos os dados referentes às matrizes de confusão, curva ROC e AUC para facilitar o monitoramento do desempenho dos modelos.
 
   O resultado final alcançado foi:
 
@@ -444,9 +463,13 @@ Nesta seção, discutiremos as etapas que foram seguidas para monitorar a perfom
   </table>
   </div> 
 
-  De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree.
+  De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
+  
+  O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree.
 
-  O KNN tem um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor. A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
+  O KNN tem um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor. 
+  
+  A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
 
 - 3º: Construção da matriz de confusão
 
