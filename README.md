@@ -713,10 +713,21 @@ def plot_roc_curve_from_df(df):
     
     plt.show()
 ```
+- Análise
 
 - Segue abaixo as curvas ROC média dos modelos com as suas respectivas AUC média e desvio padrão:
 
-- PNG
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="link_for_website">
+          <img height="450em" src="./assets/curva_roc.png" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
 Ao analisar a imagem acima podemos perceber que o Decision Tree é o modelo mais eficaz entre os avaliados, possuindo um AUC de 0.68. Os modelos Random Forest e KNN possuem desempenho similar, com AUCs semelhantes (de 0.66 e 0.67, respectivamente), mas ainda um pouco inferiores quando comparadaos ao Decision Tree. 
 
