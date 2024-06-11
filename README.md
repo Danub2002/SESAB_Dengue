@@ -414,6 +414,8 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos. O monitoramente foi feito considerando: *1. Métricas de desempenho, 2. Matriz de confusão e 3. Curva ROC*.
 
+*Porém, antes de discutirmos sobre os tópicos utilizados para monitorar a performance dos modelos, iremos dicutir sobre as modificações feitas no arquivo `pipeline.py`'*
+
 - Começando com a importação das bibliotecas, comparado ao código anterior, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
 
 ```python
@@ -559,9 +561,9 @@ A Logistic Regression apresentou um desempenho significativamente inferior em co
 
 Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos em comparação com os valores reais, foi gerada uma matriz de confusão.
 
-- O código referente à construção e plotagem da matriz de confusão está contido no arquivo 'roc_curve'
+- O código referente à construção e plotagem da matriz de confusão está contido no arquivo `roc_curve`
 
-- Primeiramente definimos a função 'str_to_matrix', na qual converte uma string que está representando uma matriz de confusão em uma matriz NumPy. Em seguida, essa função é aplicada à coluna "Confusion Matrix" do DataFrame df, convertendo cada entrada de string em uma matriz NumPy.
+- Primeiramente definimos a função `str_to_matrix`, na qual converte uma string que está representando uma matriz de confusão em uma matriz NumPy. Em seguida, essa função é aplicada à coluna "Confusion Matrix" do DataFrame df, convertendo cada entrada de string em uma matriz NumPy.
 
 ```python
     def str_to_matrix(s):
