@@ -545,7 +545,7 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
   </table>
   </div>
 
-* Análise 
+  - Análise 
 
 De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
   
@@ -612,7 +612,7 @@ Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos mod
   plt.tight_layout()
   plt.show()	
 ```
-    - Análise 
+- Análise 
 
 A matriz de confusão final pode ser encontrada a seguir:
 
