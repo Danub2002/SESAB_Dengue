@@ -408,13 +408,13 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 ### Monitoramento da Performance do Modelo:
 
-> Aqui estão as etapas que levam em conta apenas as alterações feitas no código-fonte descrito integralmente no relatório anterior. Portanto, qualquer modificação no código-fonte será detalhada e justificada; caso contrário, presume-se que o código permaneceu inalterado.
+> Aqui estão as etapas que levam em conta apenas as alterações feitas no código-fonte que foi descrito integralmente no relatório anterior. Portanto, qualquer modificação no código-fonte será detalhada e justificada; caso contrário, presume-se que o código permaneceu inalterado.
 
 > O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
 
-Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos.
+Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos. O monitoramente foi feito considerando: *1. Métricas de desempenho, 2. Matriz de confusão e 3. Curva ROC*.
 
-- Quanto as importações das bibliotecas necessárias, comparado ao código anterior, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
+- Começando com a importação das bibliotecas, comparado ao código anterior, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
 
 ```python
     from sklearn.metrics import precision_score,recall_score,f1_score,confusion_matrix, roc_curve, auc,RocCurveDisplay
@@ -440,7 +440,9 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
       return f1,precision,recall,fpr,tpr,auc
   ```
 
-- Em seguida temos a função run_pipeline onde a maior parte do trabalho de modelagem é feito. Primeiro, os dados são lidos do arquivo CSV e armazenados em um DataFrame pandas. Quanto a quantidade de iterações, optamos por 5. 
+- Em seguida temos a função run_pipeline onde a maior parte do trabalho de modelagem é feito. 
+
+- Quanto a quantidade de iterações, optamos por 5. 
 
 - No código anterior um dicionário vazio chamado 'results' foi criado para armazenar os resultados das métricas de avaliação e de outros dados relevantes gerados durante a validação cruzada, como 'iteration' e 'fold'. Para mais, nessa versão também adicionamos os dados referentes às matrizes de confusão, curva ROC e AUC para realizar o monitoramento do desempenho dos modelos. 
 
@@ -527,7 +529,7 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
     run_pipeline()
 ```
 
-#### Métricas de desempenho
+#### 1. Métricas de desempenho
 
 - O resultado final permaneceu o mesmo do relatório anterior, uma vez que nenhum pré-processamento ou mudança de hiperparâmetros foi feito.
 
@@ -541,7 +543,9 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
       </td>
     </tr>
   </table>
-  </div> 
+  </div>
+
+* Análise 
 
 De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
   
@@ -551,7 +555,7 @@ O KNN apresentou um desempenho aceitável, com um F1-score de 0.60. Sua precisã
   
 A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
 
-#### Construção da matriz de confusão
+#### 2. Matriz de confusão
 
 Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos em comparação com os valores reais, foi gerada uma matriz de confusão.
 
@@ -608,10 +612,21 @@ Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos mod
   plt.tight_layout()
   plt.show()	
 ```
-  
+* Análise 
+
 A matriz de confusão final pode ser encontrada a seguir:
 
-- PNG
+  <div align="center">
+  <table style="border: none; margin: auto;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="link_for_website">
+          <img height="250em" src="./assets/matriz_de_confusao.PNG" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+  </div>
 
 De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
   
@@ -623,7 +638,7 @@ Por fim, o Random Forest apresentou bom equilíbrio entre verdadeiros positivos 
 
 Acreditamos que o fato dos modelos estarem, de modo geral, obtendo números altos de verdadeiros negativos pode ser devido a falta de informações na classe a ser predita ('CLASSI_FIN'). Tais informações foram solicitadas via formulário à SESAB, como instruído pelos professores e monitores. 
 
-#### Construção da curva ROC 
+#### 3. Curva ROC 
 
 Nós também utilizamos a curva ROC e a métrica AUC (Area Under the Curve) para avaliar o desempenho de modelos de classificação. 
 
