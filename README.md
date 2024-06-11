@@ -531,7 +531,7 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
 
 #### 1. Métricas de desempenho
 
-- O resultado final permaneceu o mesmo do relatório anterior, uma vez que nenhum pré-processamento ou mudança de hiperparâmetros foi feito.
+O resultado final permaneceu o mesmo do relatório anterior, uma vez que nenhum pré-processamento ou mudança de hiperparâmetros foi feito.
 
   <div align="center">
   <table style="border: none; margin: auto;">
@@ -545,7 +545,7 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
   </table>
   </div>
 
-  - Análise 
+- Análise 
 
 De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
   
@@ -612,21 +612,22 @@ Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos mod
   plt.tight_layout()
   plt.show()	
 ```
+
 - Análise 
 
 A matriz de confusão final pode ser encontrada a seguir:
 
-  <div align="center">
-  <table style="border: none; margin: auto;">
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
     <tr>
       <td align="center" style="border: none;">
-        <a href="link_for_website">
-          <img height="250em" src="./assets/matriz_de_confusao.PNG" border="0" />
+        <a href="https://app.powerbi.com/links/2qgnVXixyU?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/matriz_de_confusao.jpg" border="0" />
         </a>
       </td>
     </tr>
   </table>
-  </div>
+</div>
 
 De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
   
