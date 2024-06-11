@@ -618,13 +618,7 @@ Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos mod
 A matriz de confusão final pode ser encontrada a seguir:
 
 <div align="center">
-  <table style="border: none; margin: auto; background-color: white;">
-    <tr>
-      <td align="center" style="border: none;">
-          <img height="600em" src="./assets/matriz_de_confusao.jpg" border="0" />
-      </td>
-    </tr>
-  </table>
+  ![](https://commonmark.org/help/images/favicon.png)
 </div>
 
 De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
