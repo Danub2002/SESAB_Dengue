@@ -405,6 +405,79 @@ A partir das visualizações elaboradas no dashboard, podemos extrair os seguint
 
 ### Avaliação dos Hiperparâmetros:
 
-- dsds
 
 ### Monitoramento da Performance do Modelo:
+
+
+  O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
+
+Nesta seção, discutiremos as etapas que foram seguidas para monitorar a perfomance dos modelos.
+
+- 1º: Definição da quantidade de iterações para a execução dos modelos
+
+  Optamos por 5 iterações. 
+
+- 2º: Cálculo das métricas F1, Recall e Precision
+
+  Como dito no relatório anterior, definimos uma função 'compute_scores' para calcular as métricas F1, Precision e Recall.
+
+  ```python
+  def compute_scores(y_test,y_pred):
+    f1 = f1_score(y_test,y_pred)
+    precision = precision_score(y_test,y_pred)
+    recall = recall_score(y_test,y_pred)
+    return f1,precision,recall
+  ```
+  Um dicionário vazio chamado 'results' foi criado para armazenar os resultados das métricas de avaliação.
+
+  O resultado final alcançado foi:
+
+  <div align="center">
+  <table style="border: none; margin: auto;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="link_for_website">
+          <img height="250em" src="./assets/precisao_modelos.PNG" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+  </div> 
+
+  De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree.
+
+  O KNN tem um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor. A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
+
+- 3º: Construção da matriz de confusão
+
+  Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos em comparação com os valores reais, nós geramos uma matriz de confusão. 
+
+  Como utilizamos 5 iterações, uma matriz de confusão foi gerada para cada fold dentro de cada iteração para cada modelo. Assim, para gerar uma única matriz, nós somamos os valores das matrizes geradas durante as iterações e tiramos a sua média.
+  
+  A matriz de confusão final pode ser encontrada a seguir:
+
+  - PNG
+
+  De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
+  
+  O modelo Decision Tree demonstrou maior equilíbrio entre positivos e negativos em comparação com o KNN.Porém, ele também apresentou uma quantidade significativa de falsos positivos e falsos negativos.
+
+  O Logistic Regression, por sua vez, embora tenha gerado um baixo número de falsos positivos (3,212), falhou significativa na detecção de positivos, com alta taxa de falsos negativos (23,092), sendo o pior dos modelos. 
+
+  Por fim, o Random Forest apresentou bom equilíbrio entre verdadeiros positivos e verdadeiros negativos, semelhante ao Decision Tree, mas ligeiramente melhor em detectar positivos. Entretanto, ele apresentou um número considerável de falsos positivos (7,469)
+
+  Acreditamos que o fato dos modelos estarem, de modo geral, obtendo números altos de verdadeiros negativos pode ser devido a falta de informações no atributo a ser predito ('CLASSI_FIN'). Tais informações foram solicitadas via formulário à SESAB, como instruído pelos professores e monitores. 
+  
+  - 4º: Construção da curva ROC e utilização da métrica AUC
+  
+  Nós também utilizamos a curva ROC e a métrica AUC (Area Under the Curve) para avaliar o desempenho de modelos de classificação. 
+
+  Segue abaixo as curvas ROC e suas respectivas AUC:
+
+  - PNG
+
+  Ao analisar a imagem acima podemos perceber que o Decision Tree é o modelo mais eficaz entre os avaliados, possuindo um AUC de 0.68. Os modelos Random Forest e KNN possuem desempenho similar, com AUCs semelhantes (de 0.66 e 0.67, respectivamente), mas ainda um pouco inferiores quando comparadaos ao Decision Tree. 
+
+  Com um AUC de 0.53, a curva ROC do modelo Logistic Regression está muito próxima da linha diagonal, indicando que o desempenho do modelo é apenas ligeiramente melhor do que o acaso.
+
+  As análise extraídas da curva ROC confirmam as observações feitas anteriomente sobre o desempenho dos modelos, destacando o Decision Tree como o modelo mais promissor, seguido por Random Forest e KNN.
