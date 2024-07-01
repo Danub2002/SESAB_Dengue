@@ -320,89 +320,6 @@ Este relatório em específico especifica a criação de um dashboard para a vis
 
 ## Etapas do Trabalho:
 
-### Dashboard de visualização dos dados:
-
-Nesta seção, discutiremos as decisões e ideias que nortearam a construção do dashboard requerido para esta entrega. A seguir, vocês terão acesso a uma imagem do dashboard, que não exibe seu potencial total, como filtro de dados e afins, visto que a imagem é estática. Para uma visualização dinâmica do dashboard, onde permita a manipulação de filtros e dados, basta clicar na imagem, que você será redirecionado para o dashboard na plataforma PowerBI Online (importante destacar que será necessário o login na conta UFBA para o acesso dessa maneira). Entretanto, para aqueles que preferirem, basta baixar o arquivo [Base_de_Dados_Sesab.pbix](./Base_de_Dados_Sesab.pbix), onde você poderá baixar o dashboard e acessá-lo pelo aplicativo do PowerBI em seu computador pessoal.
-
-<div align="center">
-  <table style="border: none; margin: auto; background-color: white;">
-    <tr>
-      <td align="center" style="border: none;">
-        <a href="https://app.powerbi.com/links/2qgnVXixyU?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
-          <img height="600em" src="./assets/DashBoard_SESAB.jpg" border="0" />
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-
-#### Seleção e Manipulação dos Dados para Visualização:
-
-Como ressaltado anteriormente, devemos responder à pergunta: Se um dado paciente apresentar **X** sintomas, ele receberá diagnóstico de dengue com base nos dados disponíveis ? 
-
-Diante dessa provocação, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue. Caso haja alguma dúvida sobre quais features foram escolhidas, basta voltar algumas seções deste documento, que estará tudo explicado. 
-
-Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
-
-- Criação de uma nova coluna (Absolute_Dengue) que agrupa os casos classificados como indeterminados e descartados em um grupo e as classificações de dengue em outro. Isto ajudou na elaboração de uma visualização que funciona de maneira binária na classificação da doença;
-
-- Alteração dos valores do atributo CLASSI_FIN de numéricos para categóricos, para que assim haja uma coesão maior na apresentação do dashboard;
-
-- Alteração das classificações de sexo (gênero) para que também houvesse maior coesão na criação das visualizações;
-
-- Alteração dos valores que determinavam a presença ou ausência de um sintoma, também favorecendo a coesão das visualizções.
-
-Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
-
-#### Escolha das Visualizações:
-
-Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
-
-- **Charts para Informações Gerais**
-  - *Nesta visualização, temos 4 charts que nos trazem informações gerais , mas pertinentes acerca das notificações de dengue dos dados pré-processados. Onde exibimos: a quantidade de sintomas levados em conta no diagnóstico da doença, a quantidade de casos classificados como dengue, a quantidade de notificações descartadas e também a quantidade de notificações levantadas (descartadas+confirmadas).Importante ressaltar que essas informações são dinâmicas e podem ser alteradas quando escolhermos um certo diagnóstico ou gênero, por exemplo. A visualização desses dados contribiu para um entendimento geral da base de dados e ajuda a situar o observador sobre o dashboard em questão.*
-
-- **Gênero dos Notificados**
-  - *Nesta visualização, podemos visualizar a quantidade de homens, mulheres e pessoas de sexo não definido notificadas. Ao clicarmos em uma das seções do gráfico de pizza, podemos especificar o gênero que queremos explorar os dados e o restante das visualizações será ajustado de acordo com esse filtro. Através desse gráfico, podemos notar a existência ou não de uma tendência de confirmação de casos para algum dos sexos e assim, levantar pesquisas e experimentos para se aprofundar no debate, caso haja suspeitas.*
-
-- **Sintomas Mais Presentes nas Notificações**
-  - *Nesta visualização, podemos visualizar os 5 sintomas mais presentes nas notificações para casos de suspeita de dengue. Importante ressaltar que os valores presentes na visualização se referem tanto para as notificações indeterminadas, descartadas e confirmadas. Para saber a quantidade absoluta para cada uma das classificações, basta selecionar as colunas do gráfico a seguir no dashboard, que assim esses valores serão filtrados e atualizados para corresponder ao filtro do usuário. A escolha da adoção desta visualização situa o observador nos sintomas mais recorrentes que levam à suspeita de dengue, sendo muito útil para o diagnóstico.*
-
-- **Classificação das Notificações**
-  - *Nesta visualização, o gráfico de colunas nos evidencia os diferentes tipos de classificação de casos de dengue e também a recorrência desses casos com os dados pré-processados da base de dados. Essa visualização é fundamental para se entender não só a classificação dos casos mas também para ter em mente sua distribuição de acordo com as categorias estabelecidas, demonstrando a incidência da doença nas notificações registradas.*
-
-- **Influenciadores no Diagnóstico de Dengue**
-  - *Nesta visualização, o PowerBI oferece uma ferramenta que calcula a influência de certas features para uma certa coluna. Neste caso, utilizamos as colunas referentes a sintomas (sinais clínicos) da base de dados e observamos a sua influência para o diagnóstico e classificação da notificação como dengue. Importante ressaltar que, para esta visualização, utlizamos a coluna "Absolute_dengue" ao invés da CLASSI_FIN por motivos já listados anteriomente neste documento.*
-
-#### Insights Extraídos a partir do DashBoard:
-
-A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
-
-- Pudemos observar que a maioria das notificações de dengue são para o sexo feminino, cerca de 56%. Isso nos leva a crer que a incidência de dengue para as mulheres seja maior que para os homens, mas nós da equipe acreditamos que isso se deve a fatores sociais e econômicos e não de gênero. Pesquisando acerca do tema, encontramos que as [mulheres são mais afetadas pelo vírus da dengue, a explicação estaria estaria no maior tempo médio de permanência da mulher em casa](https://www.em.com.br/app/noticia/gerais/2019/05/31/interna_gerais,1058348/pesquisa-aponta-que-mulheres-sao-mais-afetadas-pelo-virus-da-dengue.shtml). Fora isso, temos que [mulheres pardas e pretas são as mais afetadas pela dengue](https://www1.folha.uol.com.br/equilibrioesaude/2024/02/mulheres-pretas-e-pardas-sao-as-mais-afetadas-pela-dengue-no-brasil.shtml#:~:text=Grupo%20representa%2026%25%20dos%20brasileiros%20com%20suspeita%20da%20doen%C3%A7a&text=Mulheres%20pretas%20e%20pardas%20s%C3%A3o%20o%20grupo%20populacional%20com%20maior,doen%C3%A7a%20do%20Minist%C3%A9rio%20da%20Sa%C3%BAde.). O que sustenta a teoria de que fatores socias e econômicos influenciam mais no diganóstico da doença do que o gênero em si.
-
-
-- Pudemos também nos atentar que os sintomas mais comuns para suspeita de dengue são, em ordem decrescente:
-
-  1. Febre (cerca de 268 mil relatos)
-  2. Cefaleia (cerca de 234 mil relatos)
-  3. Mialgia (cerca de 229 mil relatos)
-  4. Náusea (cerca de 101 mil relatos)
-  5. Artralgia (cerca de 89 mil relatos)
-
-  Isso nos trás informações relevantes acerca dos diagnósticos, visto que os principais sintomas são os mesmos para os gêneros e também possuem muita influência na classificação do diagnóstico.
-
-- Também obtivemos os números absolutos da classificação dos casos, que se dividem a seguir:
-
-  1. Dengue (cerca de 128 mil notificações)
-  2. Descartado (cerca de 105 mil notificações)
-  3. Indeterminado (cerca de 70 mil notificações)
-  4. Dengue com Sinais de Alarme (cerca de 3.8 mil notificações)
-  5. Dengue Grave (274 notificações)
-
-  A partir dessas informações podemos observar que, apesar de a classificação de dengue ser a maior, os casos descartados vem logo a seguir e poucos são os casos da doença que possuem agravantes, quando comparados com os outros valores.
-
-- Por fim, nossa última visualização faz o papel de analisar os principais sintomas que são relevantes no diagnóstico da doença e quantificar o quanto eles exercem essa influência. Em suma, os insights já estão presentes na própria visualização e acredito que não preciso ser redundante e abordar o que já está bem detalhado.
-
-
 ### Avaliação dos Hiperparâmetros:
 
 
@@ -735,3 +652,169 @@ Ao analisar a imagem acima podemos perceber que o Decision Tree é o modelo mais
 Com um AUC de 0.53, a curva ROC do modelo Logistic Regression está muito próxima da linha diagonal, indicando que o desempenho do modelo é apenas ligeiramente melhor do que o acaso.
 
 As análise extraídas da curva ROC confirmam as observações feitas anteriomente sobre o desempenho dos modelos, destacando o Decision Tree como o modelo mais promissor, seguido por Random Forest e KNN.
+
+### Dashboard de visualização dos dados:
+
+Nesta seção, discutiremos as decisões e ideias que nortearam a construção das três iterações do dashboard requerido para esta entrega. A seguir, abordaremos as versões diferentes do dashboard, cada versão terá detalhadamento acerca das visualizações escolhidas e insights adquiridos a partir da análise dessas visualizações; ademais, iremos anexar em cada seção uma imagem que fornecerá um preview do dashboard como um todo. Entretanto, por se tratar de uma imagem estática, caso desejem uma visualização dinâmica do dashboard, onde permita a manipulação de filtros e dados, basta clicar na imagem, que você será redirecionado para os respectivos dashboards na plataforma PowerBI Online (importante destacar que será necessário o login na conta UFBA para o acesso dessa maneira). Entretanto, para aqueles que preferirem, basta baixar os arquivos das iterações do dashboard, basta clicarem nos links a seguir: [Primeira Iteração](./Base_de_Dados_Sesab.pbix), [Segunda Iteração](./Dashboard_SESAB_2.pbix), [Terceira Iteração](./Dashboard_SESAB_3.pbix). Uma vez clicado, basta clicar no ícone superior direito da tela do github onde podemos ver uma seta apontando para baixo. Dessa forma, você poderá baixar o dashboard e acessá-lo pelo aplicativo do PowerBI em seu computador pessoal.
+
+#### Primeira Iteração - 10/06/2024
+
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="https://app.powerbi.com/links/2qgnVXixyU?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/DashBoard_SESAB.jpg" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+##### Seleção e Manipulação dos Dados para Visualização:
+
+_Importante ressaltar, em primeira instância que na primeira iteração do dashboard, houve um equívoco por parte da equipe. O engano diz respeito à escolha de produzir um dashboard apenas focado em critérios relacionados aos sintomas dos pacientes e as implicações que tais sintomas acarretam nos resultados dos diagnósticos. Dito isso, mantivemos intacto as motivações e explicações utilizadas pela equipe na construção do primeiro relatório do dashboard. A partir da segunda iteração, percebemos que o dashboard deve abrangir as features da base de dados como um todo e, portanto, não haverá essa errata nas seguintes seções. Segue o texto:_
+
+Como ressaltado anteriormente, devemos responder à pergunta: Se um dado paciente apresentar **X** sintomas, ele receberá diagnóstico de dengue com base nos dados disponíveis ? 
+
+Diante dessa provocação, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue. Caso haja alguma dúvida sobre quais features foram escolhidas, basta voltar algumas seções deste documento, que estará tudo explicado. 
+
+Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
+
+- Criação de uma nova coluna (Absolute_Dengue) que agrupa os casos classificados como indeterminados e descartados em um grupo e as classificações de dengue em outro. Isto ajudou na elaboração de uma visualização que funciona de maneira binária na classificação da doença;
+
+- Alteração dos valores do atributo CLASSI_FIN de numéricos para categóricos, para que assim haja uma coesão maior na apresentação do dashboard;
+
+- Alteração das classificações de sexo (gênero) para que também houvesse maior coesão na criação das visualizações;
+
+- Alteração dos valores que determinavam a presença ou ausência de um sintoma, também favorecendo a coesão das visualizções.
+
+Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
+
+##### Escolha das Visualizações:
+
+Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
+
+- **Charts para Informações Gerais**
+  - *Nesta visualização, temos 4 charts que nos trazem informações gerais , mas pertinentes acerca das notificações de dengue dos dados pré-processados. Onde exibimos: a quantidade de sintomas levados em conta no diagnóstico da doença, a quantidade de casos classificados como dengue, a quantidade de notificações descartadas e também a quantidade de notificações levantadas (descartadas+confirmadas).Importante ressaltar que essas informações são dinâmicas e podem ser alteradas quando escolhermos um certo diagnóstico ou gênero, por exemplo. A visualização desses dados contribiu para um entendimento geral da base de dados e ajuda a situar o observador sobre o dashboard em questão.*
+
+- **Gênero dos Notificados**
+  - *Nesta visualização, podemos visualizar a quantidade de homens, mulheres e pessoas de sexo não definido notificadas. Ao clicarmos em uma das seções do gráfico de pizza, podemos especificar o gênero que queremos explorar os dados e o restante das visualizações será ajustado de acordo com esse filtro. Através desse gráfico, podemos notar a existência ou não de uma tendência de confirmação de casos para algum dos sexos e assim, levantar pesquisas e experimentos para se aprofundar no debate, caso haja suspeitas.*
+
+- **Sintomas Mais Presentes nas Notificações**
+  - *Nesta visualização, podemos visualizar os 5 sintomas mais presentes nas notificações para casos de suspeita de dengue. Importante ressaltar que os valores presentes na visualização se referem tanto para as notificações indeterminadas, descartadas e confirmadas. Para saber a quantidade absoluta para cada uma das classificações, basta selecionar as colunas do gráfico a seguir no dashboard, que assim esses valores serão filtrados e atualizados para corresponder ao filtro do usuário. A escolha da adoção desta visualização situa o observador nos sintomas mais recorrentes que levam à suspeita de dengue, sendo muito útil para o diagnóstico.*
+
+- **Classificação das Notificações**
+  - *Nesta visualização, o gráfico de colunas nos evidencia os diferentes tipos de classificação de casos de dengue e também a recorrência desses casos com os dados pré-processados da base de dados. Essa visualização é fundamental para se entender não só a classificação dos casos mas também para ter em mente sua distribuição de acordo com as categorias estabelecidas, demonstrando a incidência da doença nas notificações registradas.*
+
+- **Influenciadores no Diagnóstico de Dengue**
+  - *Nesta visualização, o PowerBI oferece uma ferramenta que calcula a influência de certas features para uma certa coluna. Neste caso, utilizamos as colunas referentes a sintomas (sinais clínicos) da base de dados e observamos a sua influência para o diagnóstico e classificação da notificação como dengue. Importante ressaltar que, para esta visualização, utlizamos a coluna "Absolute_dengue" ao invés da CLASSI_FIN por motivos já listados anteriomente neste documento.*
+
+##### Insights Extraídos a partir do DashBoard:
+
+A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
+
+- Pudemos observar que a maioria das notificações de dengue são para o sexo feminino, cerca de 56%. Isso nos leva a crer que a incidência de dengue para as mulheres seja maior que para os homens, mas nós da equipe acreditamos que isso se deve a fatores sociais e econômicos e não de gênero. Pesquisando acerca do tema, encontramos que as [mulheres são mais afetadas pelo vírus da dengue, a explicação estaria estaria no maior tempo médio de permanência da mulher em casa](https://www.em.com.br/app/noticia/gerais/2019/05/31/interna_gerais,1058348/pesquisa-aponta-que-mulheres-sao-mais-afetadas-pelo-virus-da-dengue.shtml). Fora isso, temos que [mulheres pardas e pretas são as mais afetadas pela dengue](https://www1.folha.uol.com.br/equilibrioesaude/2024/02/mulheres-pretas-e-pardas-sao-as-mais-afetadas-pela-dengue-no-brasil.shtml#:~:text=Grupo%20representa%2026%25%20dos%20brasileiros%20com%20suspeita%20da%20doen%C3%A7a&text=Mulheres%20pretas%20e%20pardas%20s%C3%A3o%20o%20grupo%20populacional%20com%20maior,doen%C3%A7a%20do%20Minist%C3%A9rio%20da%20Sa%C3%BAde.). O que sustenta a teoria de que fatores socias e econômicos influenciam mais no diganóstico da doença do que o gênero em si.
+
+
+- Pudemos também nos atentar que os sintomas mais comuns para suspeita de dengue são, em ordem decrescente:
+
+  1. Febre (cerca de 268 mil relatos)
+  2. Cefaleia (cerca de 234 mil relatos)
+  3. Mialgia (cerca de 229 mil relatos)
+  4. Náusea (cerca de 101 mil relatos)
+  5. Artralgia (cerca de 89 mil relatos)
+
+  Isso nos trás informações relevantes acerca dos diagnósticos, visto que os principais sintomas são os mesmos para os gêneros e também possuem muita influência na classificação do diagnóstico.
+
+- Também obtivemos os números absolutos da classificação dos casos, que se dividem a seguir:
+
+  1. Dengue (cerca de 128 mil notificações)
+  2. Descartado (cerca de 105 mil notificações)
+  3. Indeterminado (cerca de 70 mil notificações)
+  4. Dengue com Sinais de Alarme (cerca de 3.8 mil notificações)
+  5. Dengue Grave (274 notificações)
+
+  A partir dessas informações podemos observar que, apesar de a classificação de dengue ser a maior, os casos descartados vem logo a seguir e poucos são os casos da doença que possuem agravantes, quando comparados com os outros valores.
+
+- Por fim, nossa última visualização faz o papel de analisar os principais sintomas que são relevantes no diagnóstico da doença e quantificar o quanto eles exercem essa influência. Em suma, os insights já estão presentes na própria visualização e acredito que não preciso ser redundante e abordar o que já está bem detalhado.
+
+#### Segunda Iteração - 18/06/2024
+
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="https://app.powerbi.com/links/JSSVYquzpn?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/DashBoard_SESAB_2.png" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+##### Seleção e Manipulação dos Dados para Visualização:
+
+Após termos sido sinalizados acerca do equívoco cometido na semana anterior, a equipe se dedicou para que no prazo de uma semana pudesse fazer as alterações necessárias e construir um dashboard mais geral e que 
+
+Diante dessa provocação, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue. Caso haja alguma dúvida sobre quais features foram escolhidas, basta voltar algumas seções deste documento, que estará tudo explicado. 
+
+Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
+
+- Criação de uma nova coluna (Absolute_Dengue) que agrupa os casos classificados como indeterminados e descartados em um grupo e as classificações de dengue em outro. Isto ajudou na elaboração de uma visualização que funciona de maneira binária na classificação da doença;
+
+- Alteração dos valores do atributo CLASSI_FIN de numéricos para categóricos, para que assim haja uma coesão maior na apresentação do dashboard;
+
+- Alteração das classificações de sexo (gênero) para que também houvesse maior coesão na criação das visualizações;
+
+- Alteração dos valores que determinavam a presença ou ausência de um sintoma, também favorecendo a coesão das visualizções.
+
+Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
+
+##### Escolha das Visualizações:
+
+Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
+
+- **Charts para Informações Gerais**
+  - *Nesta visualização, temos 4 charts que nos trazem informações gerais , mas pertinentes acerca das notificações de dengue dos dados pré-processados. Onde exibimos: a quantidade de sintomas levados em conta no diagnóstico da doença, a quantidade de casos classificados como dengue, a quantidade de notificações descartadas e também a quantidade de notificações levantadas (descartadas+confirmadas).Importante ressaltar que essas informações são dinâmicas e podem ser alteradas quando escolhermos um certo diagnóstico ou gênero, por exemplo. A visualização desses dados contribiu para um entendimento geral da base de dados e ajuda a situar o observador sobre o dashboard em questão.*
+
+- **Gênero dos Notificados**
+  - *Nesta visualização, podemos visualizar a quantidade de homens, mulheres e pessoas de sexo não definido notificadas. Ao clicarmos em uma das seções do gráfico de pizza, podemos especificar o gênero que queremos explorar os dados e o restante das visualizações será ajustado de acordo com esse filtro. Através desse gráfico, podemos notar a existência ou não de uma tendência de confirmação de casos para algum dos sexos e assim, levantar pesquisas e experimentos para se aprofundar no debate, caso haja suspeitas.*
+
+- **Sintomas Mais Presentes nas Notificações**
+  - *Nesta visualização, podemos visualizar os 5 sintomas mais presentes nas notificações para casos de suspeita de dengue. Importante ressaltar que os valores presentes na visualização se referem tanto para as notificações indeterminadas, descartadas e confirmadas. Para saber a quantidade absoluta para cada uma das classificações, basta selecionar as colunas do gráfico a seguir no dashboard, que assim esses valores serão filtrados e atualizados para corresponder ao filtro do usuário. A escolha da adoção desta visualização situa o observador nos sintomas mais recorrentes que levam à suspeita de dengue, sendo muito útil para o diagnóstico.*
+
+- **Classificação das Notificações**
+  - *Nesta visualização, o gráfico de colunas nos evidencia os diferentes tipos de classificação de casos de dengue e também a recorrência desses casos com os dados pré-processados da base de dados. Essa visualização é fundamental para se entender não só a classificação dos casos mas também para ter em mente sua distribuição de acordo com as categorias estabelecidas, demonstrando a incidência da doença nas notificações registradas.*
+
+- **Influenciadores no Diagnóstico de Dengue**
+  - *Nesta visualização, o PowerBI oferece uma ferramenta que calcula a influência de certas features para uma certa coluna. Neste caso, utilizamos as colunas referentes a sintomas (sinais clínicos) da base de dados e observamos a sua influência para o diagnóstico e classificação da notificação como dengue. Importante ressaltar que, para esta visualização, utlizamos a coluna "Absolute_dengue" ao invés da CLASSI_FIN por motivos já listados anteriomente neste documento.*
+
+##### Insights Extraídos a partir do DashBoard:
+
+A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
+
+- Pudemos observar que a maioria das notificações de dengue são para o sexo feminino, cerca de 56%. Isso nos leva a crer que a incidência de dengue para as mulheres seja maior que para os homens, mas nós da equipe acreditamos que isso se deve a fatores sociais e econômicos e não de gênero. Pesquisando acerca do tema, encontramos que as [mulheres são mais afetadas pelo vírus da dengue, a explicação estaria estaria no maior tempo médio de permanência da mulher em casa](https://www.em.com.br/app/noticia/gerais/2019/05/31/interna_gerais,1058348/pesquisa-aponta-que-mulheres-sao-mais-afetadas-pelo-virus-da-dengue.shtml). Fora isso, temos que [mulheres pardas e pretas são as mais afetadas pela dengue](https://www1.folha.uol.com.br/equilibrioesaude/2024/02/mulheres-pretas-e-pardas-sao-as-mais-afetadas-pela-dengue-no-brasil.shtml#:~:text=Grupo%20representa%2026%25%20dos%20brasileiros%20com%20suspeita%20da%20doen%C3%A7a&text=Mulheres%20pretas%20e%20pardas%20s%C3%A3o%20o%20grupo%20populacional%20com%20maior,doen%C3%A7a%20do%20Minist%C3%A9rio%20da%20Sa%C3%BAde.). O que sustenta a teoria de que fatores socias e econômicos influenciam mais no diganóstico da doença do que o gênero em si.
+
+
+- Pudemos também nos atentar que os sintomas mais comuns para suspeita de dengue são, em ordem decrescente:
+
+  1. Febre (cerca de 268 mil relatos)
+  2. Cefaleia (cerca de 234 mil relatos)
+  3. Mialgia (cerca de 229 mil relatos)
+  4. Náusea (cerca de 101 mil relatos)
+  5. Artralgia (cerca de 89 mil relatos)
+
+  Isso nos trás informações relevantes acerca dos diagnósticos, visto que os principais sintomas são os mesmos para os gêneros e também possuem muita influência na classificação do diagnóstico.
+
+- Também obtivemos os números absolutos da classificação dos casos, que se dividem a seguir:
+
+  1. Dengue (cerca de 128 mil notificações)
+  2. Descartado (cerca de 105 mil notificações)
+  3. Indeterminado (cerca de 70 mil notificações)
+  4. Dengue com Sinais de Alarme (cerca de 3.8 mil notificações)
+  5. Dengue Grave (274 notificações)
+
+  A partir dessas informações podemos observar que, apesar de a classificação de dengue ser a maior, os casos descartados vem logo a seguir e poucos são os casos da doença que possuem agravantes, quando comparados com os outros valores.
+
+- Por fim, nossa última visualização faz o papel de analisar os principais sintomas que são relevantes no diagnóstico da doença e quantificar o quanto eles exercem essa influência. Em suma, os insights já estão presentes na própria visualização e acredito que não preciso ser redundante e abordar o que já está bem detalhado.
