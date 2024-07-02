@@ -2,9 +2,7 @@
 
 <div align="center" style="line-height: 0.5">
 
-# Relatório SESAB
-## Etapa A/Cenário 1
-## Entrega 04/06
+# Relatórios - SESAB
 
 </div>
 
@@ -37,7 +35,6 @@ João Victor Leahy de Melo.
 
 </div>
 
-## Objetivo da Etapa A/Cenário 1/ Entrega 1:
 Este relatório contempla uma das entregas que devem ser realizadas para a matéria 
 
 <div align="center">
@@ -46,7 +43,7 @@ Este relatório contempla uma das entregas que devem ser realizadas para a maté
 
 </div>
 
-Este relatório em específico especifica a criação de um modelo de aprendizado de máquina que, a partir dos dados disponibilizados pela SESAB, deve ser capaz de responder a seguinte pergunta:
+Estes relatórios especificam a criação de um modelo de aprendizado de máquina que, a partir dos dados disponibilizados pela SESAB, deve ser capaz de responder a seguinte pergunta:
 
 <div align="center">
 
@@ -54,42 +51,16 @@ Este relatório em específico especifica a criação de um modelo de aprendizad
 
 </div>
 
-Para tanto, seguimos algumas regras estabelecidas pelos professores coordenadores da matéria:
+**Os relatórios constantes neste documento estão relacionados com as etapas definidas no início do curso, sendo elas:**  
 
-- **Pré-Processamento Livre**
-- **Algoritmos com hiperparâmetros definidos**
-  - *K-Nearest Neighbors (KNN)*
-    - Número de Vizinhos (K): Comece com K=5, podendo ser ajustado por meio de validação cruzada.
-    - Métrica de Distância: Euclidiana.
-    - Peso das amostras: Uniforme.
-  - *Árvore de Decisão*
-    - Critério de Divisão: Entropia.
-    - Profundidade Máxima: Sem limite inicial, ajustável com validação cruzada.
-    - Número Mínimo de Amostras para Divisão de um Nó: 2.
-    - Número Mínimo de Amostras em um Nó Folha: 1
-  - *Rede Neural (Multilayer Perceptron - MLP)*
-    - Número de Camadas Ocultas:  2 camadas.
-    - Número de Neurônios em Cada Camada Oculta: 100 neurônios.
-    - Função de Ativação: ReLU.
-    - Solver (Algoritmo de Otimização): Adam.
-    - Taxa de Aprendizado: 0.001.
-    - Número de Épocas: 200.
-    - Tamanho do Lote: 32.
-  - *Logistic Regression (Regressão Logística)*
-    - Solver: lbfgs.
-    - Penalidade: L2.
-    - Máximo de Iterações: 100.
-  - *Random Forest (Floresta Aleatória)*
-    - Número de Árvores na Floresta: 100.
-    - Critério de Divisão: Entropia.
+  - **Relatório 1 - Pré-processamento**
+  - **Relatório 2 - Algoritmo de Aprendizado de Máquina**
+  - **Relatório 3 - Análise dos Resultados**
+  - **Relatório 4 - Entrega do modelo**
 
-Dessa forma, os entregáveis para 04/06 são:
-- **Estatística descritiva com distribuição dos dados, padrões e outliers;**
-- **Divisão dos conjuntos de treino, teste e validação;** 
-- **Validação dos algoritmos com métricas de P, R e F1;**
-- **Deploy em um container e conexão com dados;**
+## Relatório 1 - Pré-processamento e Análise de Dados:
 
-## Etapas do Trabalho:
+Este relatório contempla todos os procedimentos realizados durante a etapa de pré-processamento, incluindo o desenvolvimento de um Dashboard de visualização dos dados, nos permitindo uma análise detalhada das informações pré-processados. 
 
 ### Pré-Processamento:
 
@@ -146,7 +117,214 @@ Segue em anexo os histogramas do pré processamento:
 
 Caso a visualização esteja tendo problemas de visualização devido ao modo escuro do GitHub, suegerimos que clique com o botão direito na imagem e escolha abrir a imagem em uma nova guia, onde ela será exibida corretamente.
 
-### Criação do Modelo:
+### Conclusão
+
+Neste relatório, detalhamos os procedimentos de pré-processamento realizados nos dados para garantir a integridade e relevância do conjunto de dados utilizado no diagnóstico de dengue. Utilizando as bibliotecas Python SEABORN, MATPLOTLIB, SCIKIT-LEARN, NUMPY e PANDAS, abordamos a remoção de colunas com mais de 30% de dados ausentes e a exclusão de linhas com valores faltantes, resultando em um dataset final com 307.753 linhas e 52 colunas.
+
+Além disso, selecionamos especificamente as colunas mais relevantes para o diagnóstico de dengue, garantindo features mais pertinentes para as etapas subsequentes de análise e modelagem dos algoritmos de classificação.
+
+### Dashboard de visualização dos dados:
+
+Nesta seção, discutiremos as decisões e ideias que nortearam a construção das três iterações do dashboard requerido para esta entrega. A seguir, abordaremos as versões diferentes do dashboard, cada versão terá detalhadamento acerca das visualizações escolhidas e insights adquiridos a partir da análise dessas visualizações; ademais, iremos anexar em cada seção uma imagem que fornecerá um preview do dashboard como um todo. Entretanto, por se tratar de uma imagem estática, caso desejem uma visualização dinâmica do dashboard, onde permita a manipulação de filtros e dados, basta clicar na imagem, que você será redirecionado para os respectivos dashboards na plataforma PowerBI Online (importante destacar que será necessário o login na conta UFBA para o acesso dessa maneira). Entretanto, para aqueles que preferirem, basta baixar os arquivos das iterações do dashboard, basta clicarem nos links a seguir: [Primeira Iteração](./Dashboard_SESAB_1.pbix), [Segunda Iteração](./Dashboard_SESAB_2.pbix), [Terceira Iteração](./Dashboard_SESAB_3.pbix). Uma vez clicado, basta clicar no ícone superior direito da tela do github onde podemos ver uma seta apontando para baixo. Dessa forma, você poderá baixar o dashboard e acessá-lo pelo aplicativo do PowerBI em seu computador pessoal.
+
+#### Primeira Iteração - 10/06/2024
+
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="https://app.powerbi.com/links/2qgnVXixyU?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/DashBoard_SESAB.jpg" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+##### Seleção e Manipulação dos Dados para Visualização:
+
+Importante ressaltar, em primeira instância que na primeira iteração do dashboard, houve um equívoco por parte da equipe. O engano diz respeito à escolha de produzir um dashboard apenas focado em critérios relacionados aos sintomas dos pacientes e as implicações que tais sintomas acarretam nos resultados dos diagnósticos. Dito isso, mantivemos intacto as motivações e explicações utilizadas pela equipe na construção do primeiro relatório do dashboard. A partir da segunda iteração, percebemos que o dashboard deve abrangir as features da base de dados como um todo e, portanto, não haverá essa errata nas seguintes seções. Segue o texto:
+
+Como ressaltado anteriormente, devemos responder à pergunta: Se um dado paciente apresentar *X* sintomas, ele receberá diagnóstico de dengue com base nos dados disponíveis ? 
+
+Diante dessa provocação, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue. Caso haja alguma dúvida sobre quais features foram escolhidas, basta voltar algumas seções deste documento, que estará tudo explicado. 
+
+Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
+
+- Criação de uma nova coluna (Absolute_Dengue) que agrupa os casos classificados como indeterminados e descartados em um grupo e as classificações de dengue em outro. Isto ajudou na elaboração de uma visualização que funciona de maneira binária na classificação da doença;
+
+- Alteração dos valores do atributo CLASSI_FIN de numéricos para categóricos, para que assim haja uma coesão maior na apresentação do dashboard;
+
+- Alteração das classificações de sexo (gênero) para que também houvesse maior coesão na criação das visualizações;
+
+- Alteração dos valores que determinavam a presença ou ausência de um sintoma, também favorecendo a coesão das visualizções.
+
+Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
+
+##### Escolha das Visualizações:
+
+Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
+
+- *Charts para Informações Gerais*
+  - Nesta visualização, temos 4 charts que nos trazem informações gerais , mas pertinentes acerca das notificações de dengue dos dados pré-processados. Onde exibimos: a quantidade de sintomas levados em conta no diagnóstico da doença, a quantidade de casos classificados como dengue, a quantidade de notificações descartadas e também a quantidade de notificações levantadas (descartadas+confirmadas).Importante ressaltar que essas informações são dinâmicas e podem ser alteradas quando escolhermos um certo diagnóstico ou gênero, por exemplo. A visualização desses dados contribiu para um entendimento geral da base de dados e ajuda a situar o observador sobre o dashboard em questão.
+
+- *Gênero dos Notificados*
+  - Nesta visualização, podemos visualizar a quantidade de homens, mulheres e pessoas de sexo não definido notificadas. Ao clicarmos em uma das seções do gráfico de pizza, podemos especificar o gênero que queremos explorar os dados e o restante das visualizações será ajustado de acordo com esse filtro. Através desse gráfico, podemos notar a existência ou não de uma tendência de confirmação de casos para algum dos sexos e assim, levantar pesquisas e experimentos para se aprofundar no debate, caso haja suspeitas.
+
+- *Sintomas Mais Presentes nas Notificações*
+  - Nesta visualização, podemos visualizar os 5 sintomas mais presentes nas notificações para casos de suspeita de dengue. Importante ressaltar que os valores presentes na visualização se referem tanto para as notificações indeterminadas, descartadas e confirmadas. Para saber a quantidade absoluta para cada uma das classificações, basta selecionar as colunas do gráfico a seguir no dashboard, que assim esses valores serão filtrados e atualizados para corresponder ao filtro do usuário. A escolha da adoção desta visualização situa o observador nos sintomas mais recorrentes que levam à suspeita de dengue, sendo muito útil para o diagnóstico.
+
+- *Classificação das Notificações*
+  - Nesta visualização, o gráfico de colunas nos evidencia os diferentes tipos de classificação de casos de dengue e também a recorrência desses casos com os dados pré-processados da base de dados. Essa visualização é fundamental para se entender não só a classificação dos casos mas também para ter em mente sua distribuição de acordo com as categorias estabelecidas, demonstrando a incidência da doença nas notificações registradas.
+
+- *Influenciadores no Diagnóstico de Dengue*
+  - Nesta visualização, o PowerBI oferece uma ferramenta que calcula a influência de certas features para uma certa coluna. Neste caso, utilizamos as colunas referentes a sintomas (sinais clínicos) da base de dados e observamos a sua influência para o diagnóstico e classificação da notificação como dengue. Importante ressaltar que, para esta visualização, utlizamos a coluna "Absolute_dengue" ao invés da CLASSI_FIN por motivos já listados anteriomente neste documento.
+
+##### Insights Extraídos a partir do DashBoard:
+
+A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
+
+- Pudemos observar que a maioria das notificações de dengue são para o sexo feminino, cerca de 56%. Isso nos leva a crer que a incidência de dengue para as mulheres seja maior que para os homens, mas nós da equipe acreditamos que isso se deve a fatores sociais e econômicos e não de gênero. Pesquisando acerca do tema, encontramos que as [mulheres são mais afetadas pelo vírus da dengue, a explicação estaria estaria no maior tempo médio de permanência da mulher em casa](https://www.em.com.br/app/noticia/gerais/2019/05/31/interna_gerais,1058348/pesquisa-aponta-que-mulheres-sao-mais-afetadas-pelo-virus-da-dengue.shtml). Fora isso, temos que [mulheres pardas e pretas são as mais afetadas pela dengue](https://www1.folha.uol.com.br/equilibrioesaude/2024/02/mulheres-pretas-e-pardas-sao-as-mais-afetadas-pela-dengue-no-brasil.shtml#:~:text=Grupo%20representa%2026%25%20dos%20brasileiros%20com%20suspeita%20da%20doen%C3%A7a&text=Mulheres%20pretas%20e%20pardas%20s%C3%A3o%20o%20grupo%20populacional%20com%20maior,doen%C3%A7a%20do%20Minist%C3%A9rio%20da%20Sa%C3%BAde.). O que sustenta a teoria de que fatores socias e econômicos influenciam mais no diganóstico da doença do que o gênero em si.
+
+
+- Pudemos também nos atentar que os sintomas mais comuns para suspeita de dengue são, em ordem decrescente:
+
+  1. Febre (cerca de 268 mil relatos)
+  2. Cefaleia (cerca de 234 mil relatos)
+  3. Mialgia (cerca de 229 mil relatos)
+  4. Náusea (cerca de 101 mil relatos)
+  5. Artralgia (cerca de 89 mil relatos)
+
+  Isso nos trás informações relevantes acerca dos diagnósticos, visto que os principais sintomas são os mesmos para os gêneros e também possuem muita influência na classificação do diagnóstico.
+
+- Também obtivemos os números absolutos da classificação dos casos, que se dividem a seguir:
+
+  1. Dengue (cerca de 128 mil notificações)
+  2. Descartado (cerca de 105 mil notificações)
+  3. Indeterminado (cerca de 70 mil notificações)
+  4. Dengue com Sinais de Alarme (cerca de 3.8 mil notificações)
+  5. Dengue Grave (274 notificações)
+
+  A partir dessas informações podemos observar que, apesar de a classificação de dengue ser a maior, os casos descartados vem logo a seguir e poucos são os casos da doença que possuem agravantes, quando comparados com os outros valores.
+
+- Por fim, nossa última visualização faz o papel de analisar os principais sintomas que são relevantes no diagnóstico da doença e quantificar o quanto eles exercem essa influência. Em suma, os insights já estão presentes na própria visualização e acredito que não preciso ser redundante e abordar o que já está bem detalhado.
+
+#### Segunda Iteração - 18/06/2024
+
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="https://app.powerbi.com/links/JSSVYquzpn?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/DashBoard_SESAB_2.png" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+##### Seleção e Manipulação dos Dados para Visualização:
+
+Após termos sido sinalizados acerca do equívoco cometido na semana anterior, a equipe se dedicou para que no prazo de uma semana pudesse fazer as alterações necessárias e construir um dashboard mais geral e que utilizasse mais dados da base de dados.
+
+Diante dessa ótica, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue, entretanto mantivemos colunas relevantes que anteriormente haviam sido descartadas. Para verificação de quais colunas foram utilizadas, basta fazer o download do arquivo; lá será possível acessar a base de dados utilizada.
+
+Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
+
+- Criação de uma nova coluna referente à idade dos indivíduos e outra também para classificação da faixa etária. Isto ajudou na elaboração de uma visualização que nos ajuda a traçar uma visualização que indica a presença das notificações em certos intervalos de idade, fator importante para elaboração de campanahas de vacinação e afins;
+
+- Criação de colunas especiais referentes ao mês e ano da notificação, para que pudessemos traçar uma visualização com série temporal para analisar o perfil epidemiológico da dengue ao longo dos anos;
+
+- Integração da base de dados da SESAB com a planilha que contem os códigos de municípios baianos do IBGE. Através da integração das duas bases através da coluna *ID_MUNICIP*, foi possível desenvolver visualizações em mapas e analisar o perfil geográfico da doença ;
+
+Mantivemos as colunas criadas para a primeira iteração, visto que ainda foram úteis na criação das novas visualizações.
+
+Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
+
+##### Escolha das Visualizações:
+
+Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. Importante ressaltar que descartamos a maioria das visualizações anteriores, pois não eram mais tão relevantes quanto os escolhidos. Entretanto, por fins práticos, não escreverei novamente as visualizações já explicadas e detalhadas anteriormente.As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
+
+- *Charts para Informação Sobre o Número de Notificações*
+  - Nesta visualização, temos um chart dinâmico que nos informa a quantidade de notificações. Inicialmente nos informa a quantidade geral das notificações, mas esse número pode mudar a medida que o usuário vai filtrando e selecionadno certos dados.
+
+- *Incidência das Notificações de Dengue por Município e Registro de Notificações por Município*
+  - Nesta visualização, utilizamos uma visualização da loja do Power BI cujo nome é Synoptic Panel da OKViz. Através dessa visualização em específico e a integração feita da base de dados com a tabela de municípios baianos do IBGE, pudemos escolher um mapa da Bahia muito melhor do que os oferecidos pelas visualizações padrões do Power BI e podemos analisar a incidência da doença entre os municípios baianos, onde cores mais intensas indicam uma presença maior das notificações nos determinados municípios. Ademais, trouxemos um cartão que indica o número de notificações registradas em cada município também, complementando o mapa citado anteriormente.
+
+- *Incidência dos Casos por Faixa Etária*
+  - Nesta visualização, fizemos uso da coluna faixa etária que criamos justamente para esta etapa do dashboard. Dessa forma, pudemos destacar as principais faixas etárias impactadas pela doença, informação importante para a Secretaria de Saúde do estado no planejamento de contenção e prevenção à dengue.
+
+- *Incidência dos Casos por Mês*
+  - Nesta visualização, recorremos oa gráfico de linhas para traçar a quantidade de notificações de dengue em cada mês por ano. No eixo X possuímos os diferentes meses do ano e cada linha representa um ano diferente da base de dados. A partir dessa visualização, podemos notar se a doença em questão possui uma sazonalidade ou período de maior propagação.
+
+##### Insights Extraídos a partir do DashBoard:
+
+A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
+
+- Pudemos notar a presença da dengue maior em grandes centros urbanos, como Salvador e Lauro de Freitas. Entretanto, também temos um número acentuado de notificações em Barreiras e Luis Eduardo Magalhães, que são municípios do extremo oeste baiano. Sendo interessante uma maior investigação para análise desse caso que não se repete em outras regiões baianas que não são centros urbanos (lugares com maior propensão de disseminação e contaminação pela dengue).
+
+
+- Pudemos também nos atentar a uma possível sazonalidade da dengue, visto que nos anos de 2016 a 2013, sem exceção, houveram picos de notificações entre os meses de março e agosto com ápice em maio. É interessante uma investigação do motivo pelo qual ocorre esse aumento vertiginoso dos casos durante essa época do ano.
+
+- Por fim, ao analisarmos a faixa etária dos indivíduos responsáveis pela notificação, notamos uma incidência muito grande em pessoas jovens (até os 30 anos). A partir desses dados, é possível entrar em contato com as autoridades responsáveis para elaborar um plano de vacinação priorizando o grupo onde ocorre maior incidência da doença e portanto combater com mais eficácia a dengue.
+
+#### Terceira Iteração - 26/06/2024
+
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="https://app.powerbi.com/links/ZvO6zWg3Mj?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/DashBoard_SESAB_3.png" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div align="center">
+  <table style="border: none; margin: auto; background-color: white;">
+    <tr>
+      <td align="center" style="border: none;">
+        <a href="https://app.powerbi.com/links/ZvO6zWg3Mj?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
+          <img height="600em" src="./assets/DashBoard_SESAB_3_MENU_FILTROS.png" border="0" />
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+O ponto alto dessa nova visualização foi a criação de um menu para os filtros, para que o usuário possa manipular os dados da visualiação do jeito que desejarem. Substituimos o cartão que continha os dados dos municípios, que foi alvo de críticas por parte dos docentes e a equipe optou por retirá-lo.
+
+##### Seleção e Manipulação dos Dados para Visualização:
+
+Após avaliação dos docentes do último dashboard, os únicos comentários e pontos de melhorias mencionados foram relacionados à escolha de certas visualizações (como por exemplo o cartão de notificações em municípios), não foram feitas mudanças na seleção e manipulação dos dados da base. 
+
+##### Escolha das Visualizações:
+
+Diferentemente da transição da primeira para a segunda iteração, todas as visualizações foram mantidas, apenas adicionamos duas novas que complementam as anteriores. Estas são:
+
+- *Incidência dos Casos por Ano*
+  - Nesta visualização, bem semelhante à visualização dos meses, mas dessa vez podemos analisar a progressão da dengue em território baiano com o passar dos anos. Em suma, a comparação deixa de ser feita entre os meses e passa a ser feita entre os anos. Temos duas linhas diferentes, uma para as notificações gerais (tanto confirmadas quanto descartadas) e outra para as notificações confirmadas, para que possamos analisar a proporção de cada tipo.
+
+- *Municípios com Mais Notificações*
+  - Por fim, esta visualização chega para complementar a visualizaçõo "Incidência das Notificações de Dengue por Município", trazendo os 6 municípios onde as notificações foram mais presentes.
+
+##### Insights Extraídos a partir do DashBoard:
+
+A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
+
+- Pudemos notar que houve um aumento significativo das notificações de dengue de 2016 até o ano atual (2024), o que indica que a prevenção da doença pode não estar surtindo o efeito esperado e, portanto, devem-se pensar em novas medidas de combater a doença. Ademais, podemos notar também que os casos de confirmação de dengue representam,na maioria das vezes, menos de 50% das notificações dos respectivos anos, indicando que há muito descarte de casos.
+
+Dessa forma, finalizamos a etapa de dashboards da equipe, onde detalhamos as diferentes iterações dos objetos, as decisões feitas para as visualizações, os motivadores para essas decisões e também insights que pudemos levantar de acordo com os dados e as visualizações disponíveis. Portanto, esperamos que nosso trabalho seja útil e possamos agregar junto à SESAB no combate e prevenção à dengue.
+
+## Relatório 2 - Algoritmo de Aprendizado de Máquina:
+
+Este relatório contempla todos os procedimentos realizados durante a etapa de desenvolvimento do algoritmo de aprendizado de máquina, incluindo a divisão dos conjuntos de treino, teste e validação, bem como a validação dos algoritmos com métricas de P, R e F1 e o código necessário para a execução dessas rotinas. 
+
+O relatório será dividido em duas seções, cada uma referente a uma iteração de modificações e melhorias no algoritmo de aprendizado de máquina. 
+
+### Primeira iteração - 04/06/2024:
 
 - A seção de criação do modelo começa com a importação das bibliotecas necessárias. As bibliotecas importadas incluem pandas e numpy para manipulação de dados, sklearn para modelagem de aprendizado de máquina, tqdm para barras de progresso e loguru para registro de logs.
 
@@ -174,7 +352,6 @@ def compute_scores(y_test,y_pred):
 	return f1,precision,recall
 ```
 - A função run_pipeline é onde a maior parte do trabalho de modelagem é feito. Primeiro, os dados são lidos do arquivo CSV e armazenados em um DataFrame pandas. Em seguida, um dicionário vazio chamado results é criado para armazenar os resultados das métricas de avaliação.
-
 
 ```python
 
@@ -249,97 +426,24 @@ def run_pipeline():
 	df_raw.to_csv("results/dengue_results_by_fold.csv",index=False)
 	df.to_csv("results/dengue_results.csv",index=False)
 
-				
-		
 
 if __name__ == "__main__":
 	run_pipeline()
 ```
-## Resultados
 
-Por fim, obtivemos os resultados dos algoritmos dos modelos que podem ser encontrados a seguir:
+### Segunda iteração - 11/06/2024:
 
-<div align="center">
-  <table style="border: none; margin: auto;">
-    <tr>
-      <td align="center" style="border: none;">
-        <a href="link_for_website">
-          <img height="250em" src="./assets/precisao_modelos.PNG" border="0" />
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
+> Aqui estão as etapas que levam em conta apenas as alterações feitas no código-fonte que foi descrito integralmente no relatório referente ao entregável do dia 04/06. Portanto, qualquer modificação no código-fonte será detalhada e justificada; caso contrário, presume-se que o código permaneceu inalterado.
 
-Como podemos ver, para o algoritmo de MLP obtivemos resultado 0 nos testes de validação utilizados, investigamos a causa desse equívoco mas não encontramos discrepâncias no código que poderiam ocasionar esse resultado. Entretanto, os resultados dos outros algoritmos permanecem normais e dentro do esperado, com uma média em torno de 60% de acerto no diagnóstico da doença.
+**Dicutiremos unicamente sobre as modificações feitas no arquivo `pipeline.py`, onde se encontra o algoritmo de aprendizado de máquina'**
 
-
-## Conclusão
-
-- Neste relatório, apresentamos o desenvolvimento e avaliação de modelos de aprendizado de máquina para diagnosticar a dengue com base em dados fornecidos pela SESAB. Nossa abordagem seguiu um fluxo de trabalho estruturado, desde o pré-processamento dos dados até a validação cruzada e avaliação de desempenho dos modelos.
-
-### Pré-Processamento
-- No pré-processamento, lidamos com dados ausentes e selecionamos colunas relevantes para o diagnóstico da dengue. As operações de limpeza resultaram em um conjunto de dados com 307.753 linhas e 52 colunas, garantindo um dataset mais robusto para a modelagem.
-
-### Modelagem
-- Utilizamos várias técnicas de aprendizado de máquina, incluindo K-Nearest Neighbors (KNN), Árvore de Decisão, Rede Neural (Multilayer Perceptron - MLP), Regressão Logística e Random Forest. Para cada técnica, foram definidos hiperparâmetros específicos conforme as orientações fornecidas pelos coordenadores da matéria.
-
-### Avaliação
-- Avaliamos os modelos utilizando validação cruzada estratificada e métricas de F1, precisão e recall. Os resultados das avaliações foram detalhados e comparados, oferecendo uma visão clara do desempenho de cada abordagem.
-
-### Resultados
-- Os resultados dos modelos mostraram diferentes níveis de eficácia, destacando-se o desempenho da Rede Neural (MLP) em termos de precisão, recall e F1-score. Estes resultados indicam que a MLP pode ser uma abordagem promissora para o diagnóstico de dengue com base nos dados disponíveis.
-
-## Conclusões Finais
-- Os modelos desenvolvidos e os processos de pré-processamento implementados demonstram a eficácia do uso de técnicas de aprendizado de máquina para o diagnóstico de doenças como a dengue. A abordagem sistemática desde a limpeza de dados até a avaliação dos modelos garantiu resultados confiáveis e robustos.
-
-- Para futuras iterações, recomenda-se explorar técnicas de ajuste de hiperparâmetros e incorporação de novos dados, além de testar outras arquiteturas de redes neurais para potencialmente melhorar ainda mais o desempenho do modelo.
-
-<div align="center" style="line-height: 0.5">
-
-## Entrega 11/06
-
-</div>
-
-## Objetivo da Etapa A/Cenário 1/ Entrega 2:
-Este relatório contempla uma das entregas que devem ser realizadas para a matéria 
-
-<div align="center">
-
-**ADML - 43: ACCS: Oficina de Projetos em Inteligência Artificial**
-
-</div>
-
-Este relatório em específico especifica a criação de um dashboard para a visualização dos dados da etapa anterior, além da avaliação dos hiperparâmetros e o do monitoramento do modelo criado anteriormente. Tudo isso voltado para responder a pergunta:
-
-<div align="center">
-
-**Este indivíduo foi diagnosticado com dengue com base nos dados disponíveis?**
-
-</div>
-
-## Etapas do Trabalho:
-
-### Avaliação dos Hiperparâmetros:
-
-
-### Monitoramento da Performance do Modelo:
-
-> Aqui estão as etapas que levam em conta apenas as alterações feitas no código-fonte que foi descrito integralmente no relatório anterior. Portanto, qualquer modificação no código-fonte será detalhada e justificada; caso contrário, presume-se que o código permaneceu inalterado.
-
-> O modelo MLP foi retirado desse monitoramente devido ao seu valor de 0 nos testes de validação utilizados, como descrito no relatório anterior.
-
-Nesta seção, discutiremos os procedimentos que foram realizados para monitorar a perfomance dos modelos. O monitoramente foi feito considerando: *1. Métricas de desempenho, 2. Matriz de confusão e 3. Curva ROC*.s
-
-**Porém, antes de discutirmos sobre os tópicos utilizados para monitorar a performance dos modelos, iremos dicutir sobre as modificações feitas no arquivo `pipeline.py`'**
-
-- Começando com a importação das bibliotecas, comparado ao código anterior, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
+- Começando com a importação das bibliotecas, comparado ao código do dia 04/06, somente foi importado métricas adicionais relacionadas à curva ROC, AUC e a matriz de confusão. 
 
 ```python
     from sklearn.metrics import precision_score,recall_score,f1_score,confusion_matrix, roc_curve, auc,RocCurveDisplay
 ```
 
-- Como descrito no relatório anterior, definimos uma função 'compute_scores' para calcular as métricas F1, Precision e Recall. Nessa versão também adicionamos uma função interna 'roc_calc_viz_pred' para gerar e retornar a curva ROC de cada modelo, incluindo FPR, TPR e AUC.
+- Como descrito na seção anterior, definimos uma função 'compute_scores' para calcular as métricas F1, Precision e Recall. Na versão do dia 11/06 também adicionamos uma função interna 'roc_calc_viz_pred' para gerar e retornar a curva ROC de cada modelo, incluindo FPR, TPR e AUC.
 
   ```python
     def compute_scores(y_test,y_pred):
@@ -390,11 +494,11 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
     	X = SelectKBest(score_func=chi2,k=5).fit_transform(X,y)
 ```
 
-- O restante do código permaneceu semelhante à versão descrita no relatório anterior. Dentro da função run_pipeline, um loop realiza a validação cruzada estratificada.
+- O restante do código permaneceu semelhante à versão descrita na seção do dia 04/06. Dentro da função run_pipeline, um loop realiza a validação cruzada estratificada, enquanto um loop interno treina e testa cada modelo em cada fold da validação cruzada. O modelo é treinado no conjunto de treinamento e as previsões são feitas no conjunto de teste. 
 
-- Um loop interno treina e testa cada modelo em cada fold da validação cruzada. O modelo é treinado no conjunto de treinamento e as previsões são feitas no conjunto de teste. Na versão mais atual, as métricas F1, precisão, recall, além dos dados das matrizes de confusão, curva ROC e AUC, são calculadas e armazenadas no dicionário results.
+- Na versão mais atual, as métricas F1, precisão, recall, além dos dados das matrizes de confusão, curva ROC e AUC, são calculadas e armazenadas no dicionário results.
 
-- Finalmente, os resultados são convertidos em um DataFrame do pandas e salvos em um arquivo CSV. Em seguida, o DataFrame é agrupado pelo nome do modelo, e as médias das métricas são calculadas e armazenadas em outro arquivo CSV.
+- O processo de conversão dos resultados em um DataFrame do pandas e o seu respectivo armazenamento em um arquivo CSV permaneceu o mesmo do dia 04/06, sendo o DataFrame, em seguida, agrupado pelo nome do modelo e as médias das métricas sendo calculadas e armazenadas em outro arquivo CSV.
 
 ```python
    for i in tqdm(range(N_ITERS)):
@@ -448,11 +552,25 @@ Nesta seção, discutiremos os procedimentos que foram realizados para monitorar
     run_pipeline()
 ```
 
-#### 1. Métricas de desempenho
+### Conclusão:
 
-O resultado final permaneceu o mesmo do relatório anterior, uma vez que nenhum pré-processamento ou mudança de hiperparâmetros foi feito.
+Este relatório descreve os passos que foram feitos para o desenvolvimento de um algoritmo de aprendizado de máquina. Os dados foram divididos cuidadosamente em conjuntos de treino, teste e validação. Para garantir uma avaliação equilibrada dos modelos, usamos validação cruzada estratificada e calculamos métricas essenciais como precisão, recall e F1.
 
-  <div align="center">
+A criação e avaliação inicial dos modelos foram o foco da primeira iteração. Na segunda iteração, adicionamos melhorias, como a inclusão de métricas adicionais (AUC, ROC e matriz de confusão) e uso do teste qui-quadrado para selecionar as características mais relevantes. 
+
+Os resultados obtidos foram armazenados de maneira organizada em arquivos CSV, permitindo uma análise detalhada e comparativa dos modelos preditivos.
+
+## Relatório 3 - Análise dos Resultados:
+
+Neste relatório descreveremos os procedimentos referentes ao monitoramento da performance dos modelos, incluindo as métricas utilizadas e uma análise detalhada sobre os resultados obtidos. 
+
+> O modelo MLP foi retirado dessa análise devido ao seu valor de 0 nos testes de validação utilizados, como será descrito a seguir.
+
+### 1. Métricas de desempenho:
+
+Por fim, obtivemos os resultados dos algoritmos dos modelos que podem ser encontrados a seguir:
+
+<div align="center">
   <table style="border: none; margin: auto;">
     <tr>
       <td align="center" style="border: none;">
@@ -462,21 +580,24 @@ O resultado final permaneceu o mesmo do relatório anterior, uma vez que nenhum 
       </td>
     </tr>
   </table>
-  </div>
+</div>
+
 
 - Análise 
 
 De modo geral, podemos observar que o modelo Decision Tree apresentou o melhor desempenho geral, com o maior F1-score (0.63), indicando um bom equilíbrio entre precisão e recall. 
   
-O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree.
+O Random Forest também apresentou um bom desempenho, com métricas próximas às do Decision Tree. 
 
-O KNN apresentou um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor. 
+O KNN apresentou um desempenho aceitável, com um F1-score de 0.60. Sua precisão (0.65) é comparável à do Decision Tree, mas com uma recall (0.56) um pouco menor, indicando que ele é menos eficaz em capturar todos os verdadeiros positivos. 
   
-A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25.
+A Logistic Regression apresentou um desempenho significativamente inferior em comparação com os outros modelos, com um F1-score de apenas 0.25. Seu recall de 0.17 indica que ele tem grandes dificuldades em capturar verdadeiros positivos, apesar de ter uma precisão de 0.56.
 
-#### 2. Matriz de confusão
+Como podemos ver, para o algoritmo de MLP obtivemos resultado 0 nos testes de validação utilizados, investigamos a causa desse equívoco mas não encontramos discrepâncias no código que poderiam ocasionar esse resultado. Entretanto, os resultados dos outros algoritmos permanecem normais e dentro do esperado, com uma média em torno de 60% de acerto no diagnóstico da doença.
 
-Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos em comparação com os valores reais, foi gerada uma matriz de confusão.
+### 2. Matriz de confusão:
+
+Com o objetivo de obtermos uma visão mais detalhada sobre as previsões dos modelos de classificação em comparação com os valores reais, geramos uma matriz de confusão. A matriz de confusão nos ajudou a identificar não apenas a acurácia geral, mas também a natureza dos erros cometidos pelos modelos.
 
 - O código referente à construção e plotagem da matriz de confusão está contido no arquivo `roc_curve`
 
@@ -548,23 +669,25 @@ A matriz de confusão final pode ser encontrada a seguir:
   </table>
 </div>
 
-De modo geral, o KNN apresentou um bom desempenho em detectar negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
-  
-O modelo Decision Tree demonstrou maior equilíbrio entre positivos e negativos em comparação com o KNN.Porém, ele também apresentou uma quantidade significativa de falsos positivos e falsos negativos.
+A partir da matriz de confusão fornecida, podemos analisar o desempenho dos quatro modelos: KNN, Decision Tree, Logistic Regression e Random Forest.
 
-O Logistic Regression, por sua vez, embora tenha gerado um baixo número de falsos positivos (3,212), falhou significativa na detecção de positivos, com alta taxa de falsos negativos (23,092), sendo o pior dos modelos. 
+De modo geral, o KNN apresentou um bom desempenho em detectar verdadeiros negativos (28,212), apesar de possuir uma alta taxa de falsos negativos (15,635), indicando dificuldades em identificar corretamente os positivos. 
+  
+O modelo Decision Tree demonstrou maior equilíbrio entre verdadeiros positivos e verdadeiros negativos em comparação com o KNN. Porém, ele também apresentou uma quantidade significativa de falsos positivos e falsos negativos. 
+
+O Logistic Regression, por sua vez, apresenta um alto número de verdadeiros negativos (31,874) e um baixo número de falsos positivos (3,212), mas falha consideravelmente na detecção de positivos, com um alto número de falsos negativos (23,092) e um baixo número de verdadeiros positivos (3,253), sendo o pior dos modelos. 
 
 Por fim, o Random Forest apresentou bom equilíbrio entre verdadeiros positivos e verdadeiros negativos, semelhante ao Decision Tree, mas ligeiramente melhor em detectar positivos. Entretanto, ele apresentou um número considerável de falsos positivos (7,469)
 
-Acreditamos que o fato dos modelos estarem, de modo geral, obtendo números altos de verdadeiros negativos pode ser devido a falta de informações na classe a ser predita ('CLASSI_FIN'). Tais informações foram solicitadas via formulário à SESAB, como instruído pelos professores e monitores. 
+Acreditamos que o fato dos modelos estarem, de modo geral, obtendo números altos de verdadeiros negativos pode ser devido a falta de informações na classe a ser predita ('CLASSI_FIN'). Tais informações foram solicitadas via formulário à SESAB, como instruído pelos professores e monitores, mas não recebemos nenhum retorno até então, impossibilitando uma análise mais meticulosa dos resultados. 
 
-#### 3. Curva ROC 
+### 3. Curva ROC:
 
-Nós também utilizamos a curva ROC e a métrica AUC (Area Under the Curve) para avaliar o desempenho de modelos de classificação. 
+Nós também utilizamos a curva ROC e a métrica AUC (Area Under the Curve) para avaliar o desempenho de modelos de classificação e analizar os resultados produzidos. 
 
 - A curva ROC foi gerada no mesmo arquivo da matriz de confusão, 'roc_curve'. 
 
-- O arquivo começa com a importação das bibliotecas necessárias para a construção da curva ROC. Essas bibliotecas são importadas para manipulação de dados (pandas), cálculos numéricos (numpy), plotagem de gráficos (matplotlib e seaborn), e cálculo da métrica AUC (sklearn).
+- O arquivo começa com a importação das bibliotecas necessárias para a construção da curva ROC. Essas bibliotecas são importadas para manipulação de dados (pandas), cálculos numéricos (numpy), plotagem de gráficos (matplotlib e seaborn) e cálculo da métrica AUC (sklearn).
 
 ```python
     import numpy as np
@@ -647,174 +770,35 @@ Segue abaixo as curvas ROC média dos modelos com as suas respectivas AUC média
   </table>
 </div>
 
-Ao analisar a imagem acima podemos perceber que o Decision Tree é o modelo mais eficaz entre os avaliados, possuindo um AUC de 0.68. Os modelos Random Forest e KNN possuem desempenho similar, com AUCs semelhantes (de 0.66 e 0.67, respectivamente), mas ainda um pouco inferiores quando comparadaos ao Decision Tree. 
+Ao analisar a imagem acima podemos constatar que o Decision Tree é o modelo mais eficaz entre os avaliados, possuindo um AUC de 0.68, que é o mais alto entre os modelos comparados. Isso indica que o Decision Tree tem a melhor capacidade de discriminação entre as classes positiva e negativa. Os modelos Random Forest e KNN possuem desempenho similar, com AUCs semelhantes (de 0.66 e 0.67, respectivamente), mas ainda um pouco inferiores quando comparadaos ao Decision Tree. 
 
-Com um AUC de 0.53, a curva ROC do modelo Logistic Regression está muito próxima da linha diagonal, indicando que o desempenho do modelo é apenas ligeiramente melhor do que o acaso.
+Com um AUC de 0.53, a curva ROC do modelo Logistic Regression está muito próxima da linha diagonal, indicando que o desempenho do modelo é apenas ligeiramente melhor do que o acaso, o que confirma as observações anteriores sobre o seu desempenho insastisfatório.
 
 As análise extraídas da curva ROC confirmam as observações feitas anteriomente sobre o desempenho dos modelos, destacando o Decision Tree como o modelo mais promissor, seguido por Random Forest e KNN.
 
-### Dashboard de visualização dos dados:
+### Conclusão: 
 
-Nesta seção, discutiremos as decisões e ideias que nortearam a construção das três iterações do dashboard requerido para esta entrega. A seguir, abordaremos as versões diferentes do dashboard, cada versão terá detalhadamento acerca das visualizações escolhidas e insights adquiridos a partir da análise dessas visualizações; ademais, iremos anexar em cada seção uma imagem que fornecerá um preview do dashboard como um todo. Entretanto, por se tratar de uma imagem estática, caso desejem uma visualização dinâmica do dashboard, onde permita a manipulação de filtros e dados, basta clicar na imagem, que você será redirecionado para os respectivos dashboards na plataforma PowerBI Online (importante destacar que será necessário o login na conta UFBA para o acesso dessa maneira). Entretanto, para aqueles que preferirem, basta baixar os arquivos das iterações do dashboard, basta clicarem nos links a seguir: [Primeira Iteração](./Base_de_Dados_Sesab.pbix), [Segunda Iteração](./Dashboard_SESAB_2.pbix), [Terceira Iteração](./Dashboard_SESAB_3.pbix). Uma vez clicado, basta clicar no ícone superior direito da tela do github onde podemos ver uma seta apontando para baixo. Dessa forma, você poderá baixar o dashboard e acessá-lo pelo aplicativo do PowerBI em seu computador pessoal.
+Este relatório forneceu uma análise abrangente dos resultados obtidos pelos diferentes modelos de aprendizado de máquina aplicados ao conjunto de dados de diagnóstico de dengue. Usamos métricas de desempenho como F1-score, precisão e recall, além da análise de matrizes de confusão e curvas ROC. De modo geral, identificamos que o modelo Decision Tree se destacou como o mais eficaz, demonstrando um bom equilíbrio entre precisão e recall, além de apresentar o maior AUC. O modelo Random Forest apresentou um desempenho parecido com o Decision Tree, enquanto o KNN apresentou resultados aceitáveis, embora com uma diminuição na capacidade de identificar verdadeiros positivos. A Logistic Regression, por outro lado, teve um desempenho insatisfatório, com dificuldades significativas em capturar positivos.
 
-#### Primeira Iteração - 10/06/2024
+## Conclusão Final
 
-<div align="center">
-  <table style="border: none; margin: auto; background-color: white;">
-    <tr>
-      <td align="center" style="border: none;">
-        <a href="https://app.powerbi.com/links/2qgnVXixyU?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
-          <img height="600em" src="./assets/DashBoard_SESAB.jpg" border="0" />
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
+- Nestes relatórios, apresentamos o desenvolvimento e avaliação de modelos de aprendizado de máquina para diagnosticar a dengue com base em dados fornecidos pela SESAB. Nossa abordagem seguiu um fluxo de trabalho estruturado, desde o pré-processamento e análise dos dados até a validação cruzada e avaliação de desempenho dos modelos.
 
-##### Seleção e Manipulação dos Dados para Visualização:
+#### Pré-Processamento e análise dos dados
 
-_Importante ressaltar, em primeira instância que na primeira iteração do dashboard, houve um equívoco por parte da equipe. O engano diz respeito à escolha de produzir um dashboard apenas focado em critérios relacionados aos sintomas dos pacientes e as implicações que tais sintomas acarretam nos resultados dos diagnósticos. Dito isso, mantivemos intacto as motivações e explicações utilizadas pela equipe na construção do primeiro relatório do dashboard. A partir da segunda iteração, percebemos que o dashboard deve abrangir as features da base de dados como um todo e, portanto, não haverá essa errata nas seguintes seções. Segue o texto:_
+- No pré-processamento, lidamos com dados ausentes e selecionamos colunas relevantes para o diagnóstico da dengue. As operações de limpeza resultaram em um conjunto de dados com 307.753 linhas e 52 colunas, garantindo um dataset mais robusto para a modelagem.
 
-Como ressaltado anteriormente, devemos responder à pergunta: Se um dado paciente apresentar **X** sintomas, ele receberá diagnóstico de dengue com base nos dados disponíveis ? 
+Na etapa de análise, nós desenvolvemos um Dashboard iterativo para a visualização dos dados pré-processados e extração de informações importantes para uma análise robusta e bem fundamentada. 
 
-Diante dessa provocação, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue. Caso haja alguma dúvida sobre quais features foram escolhidas, basta voltar algumas seções deste documento, que estará tudo explicado. 
+#### Algoritmo de Aprendizado de Máquina
 
-Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
+- Utilizamos várias técnicas de aprendizado de máquina, incluindo K-Nearest Neighbors (KNN), Árvore de Decisão, Rede Neural (Multilayer Perceptron - MLP), Regressão Logística e Random Forest. Para cada técnica, foram definidos hiperparâmetros específicos conforme as orientações fornecidas pelos coordenadores da matéria.
 
-- Criação de uma nova coluna (Absolute_Dengue) que agrupa os casos classificados como indeterminados e descartados em um grupo e as classificações de dengue em outro. Isto ajudou na elaboração de uma visualização que funciona de maneira binária na classificação da doença;
+#### Análise dos Resultados 
+- Avaliamos os modelos utilizando validação cruzada estratificada e métricas de F1, precisão e recall, além da análise de matrizes de confusão e curvas ROC. Os resultados das avaliações foram detalhados e comparados, oferecendo uma visão clara do desempenho de cada abordagem, com o modelo Decision Tree se destacando. 
 
-- Alteração dos valores do atributo CLASSI_FIN de numéricos para categóricos, para que assim haja uma coesão maior na apresentação do dashboard;
+## Conclusões Finais
 
-- Alteração das classificações de sexo (gênero) para que também houvesse maior coesão na criação das visualizações;
+- Os modelos desenvolvidos e os processos de pré-processamento e análise dedados implementados demonstram a eficácia do uso de técnicas de aprendizado de máquina para o diagnóstico de doenças como a dengue. A abordagem sistemática desde a limpeza de dados até a avaliação dos modelos garantiu resultados confiáveis e robustos.
 
-- Alteração dos valores que determinavam a presença ou ausência de um sintoma, também favorecendo a coesão das visualizções.
-
-Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
-
-##### Escolha das Visualizações:
-
-Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
-
-- **Charts para Informações Gerais**
-  - *Nesta visualização, temos 4 charts que nos trazem informações gerais , mas pertinentes acerca das notificações de dengue dos dados pré-processados. Onde exibimos: a quantidade de sintomas levados em conta no diagnóstico da doença, a quantidade de casos classificados como dengue, a quantidade de notificações descartadas e também a quantidade de notificações levantadas (descartadas+confirmadas).Importante ressaltar que essas informações são dinâmicas e podem ser alteradas quando escolhermos um certo diagnóstico ou gênero, por exemplo. A visualização desses dados contribiu para um entendimento geral da base de dados e ajuda a situar o observador sobre o dashboard em questão.*
-
-- **Gênero dos Notificados**
-  - *Nesta visualização, podemos visualizar a quantidade de homens, mulheres e pessoas de sexo não definido notificadas. Ao clicarmos em uma das seções do gráfico de pizza, podemos especificar o gênero que queremos explorar os dados e o restante das visualizações será ajustado de acordo com esse filtro. Através desse gráfico, podemos notar a existência ou não de uma tendência de confirmação de casos para algum dos sexos e assim, levantar pesquisas e experimentos para se aprofundar no debate, caso haja suspeitas.*
-
-- **Sintomas Mais Presentes nas Notificações**
-  - *Nesta visualização, podemos visualizar os 5 sintomas mais presentes nas notificações para casos de suspeita de dengue. Importante ressaltar que os valores presentes na visualização se referem tanto para as notificações indeterminadas, descartadas e confirmadas. Para saber a quantidade absoluta para cada uma das classificações, basta selecionar as colunas do gráfico a seguir no dashboard, que assim esses valores serão filtrados e atualizados para corresponder ao filtro do usuário. A escolha da adoção desta visualização situa o observador nos sintomas mais recorrentes que levam à suspeita de dengue, sendo muito útil para o diagnóstico.*
-
-- **Classificação das Notificações**
-  - *Nesta visualização, o gráfico de colunas nos evidencia os diferentes tipos de classificação de casos de dengue e também a recorrência desses casos com os dados pré-processados da base de dados. Essa visualização é fundamental para se entender não só a classificação dos casos mas também para ter em mente sua distribuição de acordo com as categorias estabelecidas, demonstrando a incidência da doença nas notificações registradas.*
-
-- **Influenciadores no Diagnóstico de Dengue**
-  - *Nesta visualização, o PowerBI oferece uma ferramenta que calcula a influência de certas features para uma certa coluna. Neste caso, utilizamos as colunas referentes a sintomas (sinais clínicos) da base de dados e observamos a sua influência para o diagnóstico e classificação da notificação como dengue. Importante ressaltar que, para esta visualização, utlizamos a coluna "Absolute_dengue" ao invés da CLASSI_FIN por motivos já listados anteriomente neste documento.*
-
-##### Insights Extraídos a partir do DashBoard:
-
-A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
-
-- Pudemos observar que a maioria das notificações de dengue são para o sexo feminino, cerca de 56%. Isso nos leva a crer que a incidência de dengue para as mulheres seja maior que para os homens, mas nós da equipe acreditamos que isso se deve a fatores sociais e econômicos e não de gênero. Pesquisando acerca do tema, encontramos que as [mulheres são mais afetadas pelo vírus da dengue, a explicação estaria estaria no maior tempo médio de permanência da mulher em casa](https://www.em.com.br/app/noticia/gerais/2019/05/31/interna_gerais,1058348/pesquisa-aponta-que-mulheres-sao-mais-afetadas-pelo-virus-da-dengue.shtml). Fora isso, temos que [mulheres pardas e pretas são as mais afetadas pela dengue](https://www1.folha.uol.com.br/equilibrioesaude/2024/02/mulheres-pretas-e-pardas-sao-as-mais-afetadas-pela-dengue-no-brasil.shtml#:~:text=Grupo%20representa%2026%25%20dos%20brasileiros%20com%20suspeita%20da%20doen%C3%A7a&text=Mulheres%20pretas%20e%20pardas%20s%C3%A3o%20o%20grupo%20populacional%20com%20maior,doen%C3%A7a%20do%20Minist%C3%A9rio%20da%20Sa%C3%BAde.). O que sustenta a teoria de que fatores socias e econômicos influenciam mais no diganóstico da doença do que o gênero em si.
-
-
-- Pudemos também nos atentar que os sintomas mais comuns para suspeita de dengue são, em ordem decrescente:
-
-  1. Febre (cerca de 268 mil relatos)
-  2. Cefaleia (cerca de 234 mil relatos)
-  3. Mialgia (cerca de 229 mil relatos)
-  4. Náusea (cerca de 101 mil relatos)
-  5. Artralgia (cerca de 89 mil relatos)
-
-  Isso nos trás informações relevantes acerca dos diagnósticos, visto que os principais sintomas são os mesmos para os gêneros e também possuem muita influência na classificação do diagnóstico.
-
-- Também obtivemos os números absolutos da classificação dos casos, que se dividem a seguir:
-
-  1. Dengue (cerca de 128 mil notificações)
-  2. Descartado (cerca de 105 mil notificações)
-  3. Indeterminado (cerca de 70 mil notificações)
-  4. Dengue com Sinais de Alarme (cerca de 3.8 mil notificações)
-  5. Dengue Grave (274 notificações)
-
-  A partir dessas informações podemos observar que, apesar de a classificação de dengue ser a maior, os casos descartados vem logo a seguir e poucos são os casos da doença que possuem agravantes, quando comparados com os outros valores.
-
-- Por fim, nossa última visualização faz o papel de analisar os principais sintomas que são relevantes no diagnóstico da doença e quantificar o quanto eles exercem essa influência. Em suma, os insights já estão presentes na própria visualização e acredito que não preciso ser redundante e abordar o que já está bem detalhado.
-
-#### Segunda Iteração - 18/06/2024
-
-<div align="center">
-  <table style="border: none; margin: auto; background-color: white;">
-    <tr>
-      <td align="center" style="border: none;">
-        <a href="https://app.powerbi.com/links/JSSVYquzpn?ctid=df71f6bb-e3cc-4f5b-b532-79de261b51a2&pbi_source=linkShare">
-          <img height="600em" src="./assets/DashBoard_SESAB_2.png" border="0" />
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
-
-##### Seleção e Manipulação dos Dados para Visualização:
-
-Após termos sido sinalizados acerca do equívoco cometido na semana anterior, a equipe se dedicou para que no prazo de uma semana pudesse fazer as alterações necessárias e construir um dashboard mais geral e que 
-
-Diante dessa provocação, optamos por seguir com o pré-processamento da etapa anterior, que já havia selecionado colunas importantes relacionadas ao diagnóstico de dengue. Caso haja alguma dúvida sobre quais features foram escolhidas, basta voltar algumas seções deste documento, que estará tudo explicado. 
-
-Entretanto, acho importante ressaltar algumas decisões adotadas somente para a parte do dashboard com relação aos dados. As principais alterações foram:
-
-- Criação de uma nova coluna (Absolute_Dengue) que agrupa os casos classificados como indeterminados e descartados em um grupo e as classificações de dengue em outro. Isto ajudou na elaboração de uma visualização que funciona de maneira binária na classificação da doença;
-
-- Alteração dos valores do atributo CLASSI_FIN de numéricos para categóricos, para que assim haja uma coesão maior na apresentação do dashboard;
-
-- Alteração das classificações de sexo (gênero) para que também houvesse maior coesão na criação das visualizações;
-
-- Alteração dos valores que determinavam a presença ou ausência de um sintoma, também favorecendo a coesão das visualizções.
-
-Caso haja interesse em saber todas as alterações realizadas, basta baixar a base de dados e clicar na opção de tranformar dados. A plataforma do PowerBi mantém um "track" das alterações feitas na base e é visível para todos os interessados.
-
-##### Escolha das Visualizações:
-
-Nesta seção vamos descrever as visualizações criadas e como elas se relacionam com a pergunta estabelecida para esta etapa/cenário do trabalho. As visualizações estão catalogadas a partir de seus nomes, exceto para os charts:
-
-- **Charts para Informações Gerais**
-  - *Nesta visualização, temos 4 charts que nos trazem informações gerais , mas pertinentes acerca das notificações de dengue dos dados pré-processados. Onde exibimos: a quantidade de sintomas levados em conta no diagnóstico da doença, a quantidade de casos classificados como dengue, a quantidade de notificações descartadas e também a quantidade de notificações levantadas (descartadas+confirmadas).Importante ressaltar que essas informações são dinâmicas e podem ser alteradas quando escolhermos um certo diagnóstico ou gênero, por exemplo. A visualização desses dados contribiu para um entendimento geral da base de dados e ajuda a situar o observador sobre o dashboard em questão.*
-
-- **Gênero dos Notificados**
-  - *Nesta visualização, podemos visualizar a quantidade de homens, mulheres e pessoas de sexo não definido notificadas. Ao clicarmos em uma das seções do gráfico de pizza, podemos especificar o gênero que queremos explorar os dados e o restante das visualizações será ajustado de acordo com esse filtro. Através desse gráfico, podemos notar a existência ou não de uma tendência de confirmação de casos para algum dos sexos e assim, levantar pesquisas e experimentos para se aprofundar no debate, caso haja suspeitas.*
-
-- **Sintomas Mais Presentes nas Notificações**
-  - *Nesta visualização, podemos visualizar os 5 sintomas mais presentes nas notificações para casos de suspeita de dengue. Importante ressaltar que os valores presentes na visualização se referem tanto para as notificações indeterminadas, descartadas e confirmadas. Para saber a quantidade absoluta para cada uma das classificações, basta selecionar as colunas do gráfico a seguir no dashboard, que assim esses valores serão filtrados e atualizados para corresponder ao filtro do usuário. A escolha da adoção desta visualização situa o observador nos sintomas mais recorrentes que levam à suspeita de dengue, sendo muito útil para o diagnóstico.*
-
-- **Classificação das Notificações**
-  - *Nesta visualização, o gráfico de colunas nos evidencia os diferentes tipos de classificação de casos de dengue e também a recorrência desses casos com os dados pré-processados da base de dados. Essa visualização é fundamental para se entender não só a classificação dos casos mas também para ter em mente sua distribuição de acordo com as categorias estabelecidas, demonstrando a incidência da doença nas notificações registradas.*
-
-- **Influenciadores no Diagnóstico de Dengue**
-  - *Nesta visualização, o PowerBI oferece uma ferramenta que calcula a influência de certas features para uma certa coluna. Neste caso, utilizamos as colunas referentes a sintomas (sinais clínicos) da base de dados e observamos a sua influência para o diagnóstico e classificação da notificação como dengue. Importante ressaltar que, para esta visualização, utlizamos a coluna "Absolute_dengue" ao invés da CLASSI_FIN por motivos já listados anteriomente neste documento.*
-
-##### Insights Extraídos a partir do DashBoard:
-
-A partir das visualizações elaboradas no dashboard, podemos extrair os seguintes insights:
-
-- Pudemos observar que a maioria das notificações de dengue são para o sexo feminino, cerca de 56%. Isso nos leva a crer que a incidência de dengue para as mulheres seja maior que para os homens, mas nós da equipe acreditamos que isso se deve a fatores sociais e econômicos e não de gênero. Pesquisando acerca do tema, encontramos que as [mulheres são mais afetadas pelo vírus da dengue, a explicação estaria estaria no maior tempo médio de permanência da mulher em casa](https://www.em.com.br/app/noticia/gerais/2019/05/31/interna_gerais,1058348/pesquisa-aponta-que-mulheres-sao-mais-afetadas-pelo-virus-da-dengue.shtml). Fora isso, temos que [mulheres pardas e pretas são as mais afetadas pela dengue](https://www1.folha.uol.com.br/equilibrioesaude/2024/02/mulheres-pretas-e-pardas-sao-as-mais-afetadas-pela-dengue-no-brasil.shtml#:~:text=Grupo%20representa%2026%25%20dos%20brasileiros%20com%20suspeita%20da%20doen%C3%A7a&text=Mulheres%20pretas%20e%20pardas%20s%C3%A3o%20o%20grupo%20populacional%20com%20maior,doen%C3%A7a%20do%20Minist%C3%A9rio%20da%20Sa%C3%BAde.). O que sustenta a teoria de que fatores socias e econômicos influenciam mais no diganóstico da doença do que o gênero em si.
-
-
-- Pudemos também nos atentar que os sintomas mais comuns para suspeita de dengue são, em ordem decrescente:
-
-  1. Febre (cerca de 268 mil relatos)
-  2. Cefaleia (cerca de 234 mil relatos)
-  3. Mialgia (cerca de 229 mil relatos)
-  4. Náusea (cerca de 101 mil relatos)
-  5. Artralgia (cerca de 89 mil relatos)
-
-  Isso nos trás informações relevantes acerca dos diagnósticos, visto que os principais sintomas são os mesmos para os gêneros e também possuem muita influência na classificação do diagnóstico.
-
-- Também obtivemos os números absolutos da classificação dos casos, que se dividem a seguir:
-
-  1. Dengue (cerca de 128 mil notificações)
-  2. Descartado (cerca de 105 mil notificações)
-  3. Indeterminado (cerca de 70 mil notificações)
-  4. Dengue com Sinais de Alarme (cerca de 3.8 mil notificações)
-  5. Dengue Grave (274 notificações)
-
-  A partir dessas informações podemos observar que, apesar de a classificação de dengue ser a maior, os casos descartados vem logo a seguir e poucos são os casos da doença que possuem agravantes, quando comparados com os outros valores.
-
-- Por fim, nossa última visualização faz o papel de analisar os principais sintomas que são relevantes no diagnóstico da doença e quantificar o quanto eles exercem essa influência. Em suma, os insights já estão presentes na própria visualização e acredito que não preciso ser redundante e abordar o que já está bem detalhado.
+- Para futuros trabalhos, recomenda-se explorar técnicas de ajuste de hiperparâmetros e incorporação de novos dados, além de um melhor esclarecimento do dicionário da base de dados fornecida pela SESAB. 
